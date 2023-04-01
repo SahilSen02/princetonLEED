@@ -6,14 +6,16 @@ from django.http import HttpResponse
 def index(request):
     return render(request, 'dashboard/index.html')
 
+
 def lookup(request):
     return render(request, 'dashboard/lookup.html')
+
 
 def classify(request):
     return render(request, 'dashboard/classify.html')
 
-def building(request, bin):
 
+def building(request, bin):
     try:
         building = LL84Building.objects.get(nyc_bin__contains=bin)
     except:
@@ -37,5 +39,8 @@ def building(request, bin):
         'borough': str(building.borough),
     }
 
-
     return render(request, 'dashboard/classify.html', context=context)
+
+
+def areacompare(request, bin):
+    pass
