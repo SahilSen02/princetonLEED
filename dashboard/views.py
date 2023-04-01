@@ -13,13 +13,23 @@ def classify(request):
     return render(request, 'dashboard/classify.html')
 
 def building(request, bin):
-    pk_getter = BINLookup.objects.filter(nyc_bin=bin)[0].pk
+    building = LL84Building.objects.get(nyc_bin__contains=bin)
 
-    building = LL84Building.objects.filter(pk=pk_getter)[0]
-
+    boroughcodes = {
+        'BRONX': 'The Bronx',
+        'STATEN IS': 'Staten Island',
+        'QUEENS': 'Queens',
+        'BROOKLYN': 'Brooklyn',
+        'MANHATTAN': 'Manhattan',
+        'False': 'New York'
+    }
 
     context = {
         'bin': bin,
         'building': building,
+        'codes': boroughcodes,
+        'borough': str(building.borough),
     }
+
+
     return render(request, 'dashboard/classify.html', context=context)
