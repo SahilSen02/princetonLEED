@@ -264,18 +264,518 @@
                 ]
             }
         ],
-        "credits":[]
+        "credits":[
+            {
+                "name": "Energy Performance",
+                "description": "To support energy management and reduce environmental and economic harms associated with excessive energy use by reducing greenhouse gas emissions and achieving higher levels of operating energy performance.",
+                "link": "https://www.usgbc.org/credits/existing-buildings-interiors-existing-buildings/v41/pf901?return=/credits/Existing%20Buildings/v4.1",
+                "max_points": 33,
+                "options": [
+                    {
+                        "type": "num",
+                        "name": "LEED Points for Energy Performance Score",
+                        "description": "LEED points are calculated based on the project score for each metric; the GHG emissions score and source energy score are each weighted 50% of the energy performance score. LEED points are rounded up to the nearest whole number and awarded according to Table 3.",
+                        "max_points": 33,
+                        "levels": [
+                            {
+                                "lower": 0,
+                                "upper": 40,
+                                "num_points": 0
+                            },
+                            {
+                                "lower": 40,
+                                "upper": 41,
+                                "num_points": 14
+                            },
+                            {
+                                "lower": 41,
+                                "upper": 44,
+                                "num_points": 15
+                            },
+                            {
+                                "lower": 44,
+                                "upper": 47,
+                                "num_points": 16
+                            },
+                            {
+                                "lower": 47,
+                                "upper": 50,
+                                "num_points": 17
+                            },
+                            {
+                                "lower": 54,
+                                "upper": 57,
+                                "num_points": 18
+                            },
+                            {
+                                "lower": 57,
+                                "upper": 60,
+                                "num_points": 19
+                            },
+                            {
+                                "lower": 60,
+                                "upper": 63,
+                                "num_points": 20
+                            },
+                            {
+                                "lower": 63,
+                                "upper": 66,
+                                "num_points": 21
+                            },
+                            {
+                                "lower": 66,
+                                "upper": 69,
+                                "num_points": 22
+                            },
+                            {
+                                "lower": 69,
+                                "upper": 72,
+                                "num_points": 23
+                            },
+                            {
+                                "lower": 72,
+                                "upper": 75,
+                                "num_points": 24
+                            },
+                            {
+                                "lower": 75,
+                                "upper": 78,
+                                "num_points": 25
+                            },
+                            {
+                                "lower": 78,
+                                "upper": 81,
+                                "num_points": 26
+                            },
+                            {
+                                "lower": 81,
+                                "upper": 84,
+                                "num_points": 27
+                            },
+                            {
+                                "lower": 84,
+                                "upper": 87,
+                                "num_points": 28
+                            },
+                            {
+                                "lower": 87,
+                                "upper": 90,
+                                "num_points": 29
+                            },
+                            {
+                                "lower": 90,
+                                "upper": 93,
+                                "num_points": 30
+                            },
+                            {
+                                "lower": 93,
+                                "upper": 96,
+                                "num_points": 31
+                            },
+                            {
+                                "lower": 96,
+                                "upper": 99,
+                                "num_points": 32
+                            },
+                            {
+                                "lower": 99,
+                                "upper": 100,
+                                "num_points": 33
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "name": "Enhanced Refrigerant Management",
+                "description": "To reduce ozone depletion and support early compliance with the Montreal Protocol while minimizing direct contributions to climate change.",
+                "link": "https://www.usgbc.org/credits/existing-buildings-interiors-existing-buildings/v41/ea127?return=/credits/Existing%20Buildings/v4.1",
+                "max_points": 1,
+                "options": [
+                    {
+                        "type": "bool",
+                        "name": "No Refrigerants or Low-Impact Refrigerants",
+                        "description": "Do not use refrigerants, or use only refrigerants (naturally occurring or synthetic) that have an ozone depletion potential (ODP) of zero and a global warming potential (GWP) of less than 50.",
+                        "max_points": 1
+                    },
+                    {
+                        "type": "bool",
+                        "name": "Calculation of Refrigerant Impact",
+                        "description": "Select refrigerants that are used in heating, ventilating, air-conditioning, and refrigeration (HVAC&R) equipment to minimize or eliminate the emission of compounds that contribute to ozone depletion and climate change.",
+                        "max_points": 1
+                    }
+                ]
+            },
+            {
+                "name": "Grid Harmonization",
+                "description": "To increase participation in demand response technologies and programs that make energy generation and distribution systems more affordable and more efficient, increase grid reliability, and reduce greenhouse gas emissions.",
+                "link": "https://www.usgbc.org/credits/existing-buildings/v41/ea129?return=/credits/Existing%20Buildings/v4.1",
+                "max_points": 1,
+                "options": [
+                    {
+                        "type": "bool",
+                        "name": "Demand Response Program Available and Participation",
+                        "description": "Participate in an existing demand response (DR) program and complete the following activities. Have in place a system with the capability for real-time, fully automated DR based on external initiation by a DR program provider. Semi-automated DR may be utilized in practice. Enroll in a minimum one-year DR participation amount contractual commitment with a qualified DR program provider, with the intention of multiyear renewal, for at least 10% of the annual on-peak electricity demand. On-peak demand is based on electric utility bills with an on-peak demand period defined by the local utility. The on-peak demand may vary based on the utility climate and pricing structures. Develop a comprehensive plan for meeting the contractual commitment during a Demand Response event. Include the DR processes in the current facilities requirements and operations and maintenance plan. Initiate at least one full test of the DR plan.",
+                        "max_points": 1
+                    },
+                    {
+                        "type": "bool",
+                        "name": "Demand Response Capable Building",
+                        "description": "Have infrastructure in place to take advantage of future demand response programs or dynamic, real-time pricing programs and complete the following activities. Develop a comprehensive plan for shedding at least 10% of the annual on-peak electricity demand. Peak demand is based on electric utility bills. Include the DR processes in the current facilities requirements and operations and maintenance plan. Initiate at least one full test of the DR plan as part of the building commissioning program. Contact local utility representatives to discuss participation in future DR programs",
+                        "max_points": 1
+                    },
+                    {
+                        "type": "bool",
+                        "name": "Load Flexibility and Management Strategies",
+                        "description": "Analyze the building's annual load shape and peak load based as calculated for EA prerequisite Minimum Energy Performance. Review the regional grid load profile using the metric of peak load or peak carbon emissions. The U.S. Environmental Protection Agency's (EPA) AVoided Emissions and geneRation Tool (AVERT) provides regional grid emissions data; local utilities may also provide this data. Coordinate review of building load shape and peak load with review of the regional grid profile to identify the best value load management strategies that the building can provide. Implement one or more of the load flexibility and management strategies described below. All projects must install interval recording meters and have equipment capable of accepting an external signal. Load Flexibility and Management Strategies: Peak Load Optimization: demonstrate that strategy reduces on-peak load by at least 10% as compared to peak electrical demand (1 point) Flexible Operating Scenarios: demonstrate that strategy moves at least 10% of peak load by a time period of 2 hours (1 point) On-site thermal and/or electricity storage: demonstrate that strategy reduces on-peak load by at least 10% as compared to peak electrical demand (1 point) Grid resilience technologies: project served by utilities with resilience programs in place, which leverage strategies such as islanding and part-load operation, automatically achieve this credit (1 point) Include load flexibility and management strategies and installed technologies in the Facilities Requirements and Operations Maintenance Plan. Contact local utility representatives to discuss participation in future DR programs and to inform utility of building load flexibility and management strategies.",
+                        "max_points": 1
+                    }
+                ]
+            }
+
+        ]
     },
     "Materials and Resources":{
-        "prereqs":[],
-        "credits":[]
+        "prereqs":[
+            {
+                "name": "Facility Maintenance and Renovations Policy",
+                "description": "To reduce the environmental harms associated with the materials purchased, installed, and disposed of during maintenance and renovation activities.",
+                "link": "https://www.usgbc.org/credits/existing-buildings-interiors-existing-buildings/v41/mr106?return=/credits/Existing%20Buildings/v4.1",
+                "max_points": 0,
+                "options": [
+                    {
+                        "type": "bool",
+                        "name": "Facility Maintenance and Renovations Policy",
+                        "description": "Have in place a facility maintenance and renovation policy that includes guidelines for renovation and maintenance activities, using LEED rating system strategies, to be implemented at the discretion of building owners, operators, or tenants. Renovation activities include building improvements and tenant fit-outs. Maintenance activities include general repair and replacement. The policy must cover at least those product purchases within the building and site management’s control. The policy must address purchasing, waste management and indoor air quality.",
+                        "max_points": 0
+                    }
+                ]
+            },
+            {
+                "name": "Purchasing Policy",
+                "description": "To reduce the environmental harms associated with the materials purchased, installed, and disposed of during maintenance and renovation activities.",
+                "link": "https://www.usgbc.org/credits/existing-buildings-interiors-existing-buildings/v41/mr106?return=/credits/Existing%20Buildings/v4.1",
+                "max_points": 0,
+                "options": [
+                    {
+                        "type": "bool",
+                        "name": "Facility Maintenance and Renovations Policy",
+                        "description": "Have in place a facility maintenance and renovation policy that includes guidelines for renovation and maintenance activities, using LEED rating system strategies, to be implemented at the discretion of building owners, operators, or tenants. Renovation activities include building improvements and tenant fit-outs. Maintenance activities include general repair and replacement. The policy must cover at least those product purchases within the building and site management’s control. The policy must address purchasing, waste management and indoor air quality.",
+                        "max_points": 0
+                    }
+                ]
+            }
+
+        ],
+        "credits":[
+            {
+                "name": "Purchasing",
+                "description": "To reduce environmental harm and human health risks from materials and products purchased, used, installed, and disposed of during the operations and maintenance of buildings.",
+                "link": "https://www.usgbc.org/credits/existing-buildings/v41/mr127?return=/credits/Existing%20Buildings/v4.1",
+                "max_points": 1,
+                "options": [
+                    {
+                        "type": "bool",
+                        "name": "Ongoing Consumables",
+                        "description": "For at least one month, track all ongoing consumable purchases. Purchase at least 50% (1 point) or 75% (2 points, Interiors only), by cost, of total ongoing consumables that meet at least one of the following criteria. Recycled materials and products. The content of purchases must meet or exceed the levels listed in the U.S. Environmental Protection Agency Comprehensive Procurement Guidelines. Products not covered by the Guidelines can get credit for their recycled content with no minimum. Extended use. Batteries must be rechargeable. Toner cartridges for laser printers must be remanufactured. Bio-based products. Bio-based products must meet the Sustainable Agriculture Network’s Sustainable Agriculture Standard. Bio-based raw materials must be tested using ASTM Test Method D6866 and be legally harvested, as defined by the exporting and receiving country. Exclude hide products, such as leather and other animal skin material. Paper and wood products. Paper and wood products must be certified by the Forest Stewardship Council or USGBC-approved equivalent. Materials reuse. Reuse includes salvaged, refurbished, or reused products. Extended producer responsibility. Products purchased from a manufacturer (producer) that participates in an extended producer responsibility program or is directly responsible for extended producer responsibility.Cradle to Cradle Certified. Products purchased have earned Cradle to Cradle certification of any level, Version 3 or newer.",
+                        "max_points": 1
+                    },
+                    {
+                        "type": "bool",
+                        "name": "Building Materials",
+                        "description": "For at least one month, track all building material purchases (including furniture) used and/or installed as part of space reconfigurations, additions/alternations, or renovations. Purchase at least 50% (1 point) or 75% (2 points, Interiors only), by cost, of total building materials that meet at least one of the following criteria under Reporting, Optimization, and other attributes. Reporting: Health Product Declaration. The end use product has a published, complete Health Product Declaration with full disclosure of known hazards in compliance with the Health Product Declaration open Standard. Cradle to Cradle Certified. Products purchased have earned Cradle to Cradle certification of any level, Version 3 or newer. Declare. The Declare label must indicate that all ingredients have been evaluated and disclosed down to 1000 ppm. ANSI/BIFMA e3 Furniture Sustainability Standard: Documentation from the assessor or scorecard from BIFMA must demonstrate the product earned at least 3 points under 7.5.1.3 Advanced Level in e3-2014 or 3 points under 7.4.1.3 Advanced Level in e3-2012. Product Lens certification Facts - NSF/ANSI 336. Sustainability Assessment for Commercial Furnishings Fabric at any certification level Environmental product declaration (EPD): Products having an environmental product declaration that conform to ISO 14025, 14040, 14044, and EN 15804 or ISO 21930 and have at least a cradle to gate scope. The EPD can be either industry-wide (generic) EPD or product specific Type III EPD with third party external verification in which the manufacturer is explicitly recognized as the participant by the program operator",
+                        "max_points": 1
+                    },
+                    {
+                        "type": "bool",
+                        "name": "Electronic Equipment",
+                        "description": "For at least one month, track all electronic equipment purchases. Purchase at least 50%, by cost, electronic equipment that meets at least one of the following criteria. In addition, create a phase-out plan to replace remaining products with compliant equipment at the end of their useful life. EPEAT rating. The equipment must have a silver Electronic Product Environmental Assessment Tool (EPEAT) rating or better. ENERGY STAR rating. If the equipment does not yet fall under the EPEAT rating systems, it must be ENERGY STAR® qualified or performance equivalent for projects outside the U.S. Lamps. Lamps must contain no mercury (with equivalent energy efficiency as mercury containing lamps) or have an average low mercury content of 25 picograms per lumen-hour or less.",
+                        "max_points": 1
+                    },
+                    {
+                        "type": "bool",
+                        "name": "Food and Beverage",
+                        "description": "For at least one month, track all food and beverages. Purchase at least 15%, by cost, of total combined food and beverage purchases must meet at least one of the following criteria. Exclude wine, beer, and liquor purchases from the credit calculations. Sustainable agriculture. The food or beverage must be labeled USDA Organic, Food Alliance Certified, Rainforest Alliance Certified, Protected Harvest Certified, Fair Trade, or Marine Stewardship Council’s Blue Eco-Label, or labeled with the European Community Organic Production logo in accordance with Regulations (EC) No. 834/2007 and (EC) No. 889/2008. Local sourcing. The food or beverage must contain raw materials harvested and produced within 100 miles (160 kilometers) of the site.",
+                        "max_points": 1
+                    }
+                ]
+            },
+            {
+                "name": "Waste Performance",
+                "description": "To track and reduce the waste that is generated by building occupants and hauled to and disposed of in landfills and incinerators.",
+                "link": "https://www.usgbc.org/credits/existing-buildings-interiors-existing-buildings/v41/pf903?return=/credits/Existing%20Buildings/v4.1",
+                "max_points": 1,
+                "options": [
+                    {
+                        "type": "num",
+                        "name": "LEED Points for Waste Performance",
+                        "description": "The waste performance score rates the resource consumption and resource use efficiency of the building (waste generated and diverted) against the consumption and efficiency of comparable high-performing buildings. The score is a value from 1-100 based on the project’s total weight of waste generated and the total weight of waste diverted from landfills and incineration facilities.",
+                        "max_points": 8,
+                        "levels": [
+                            {
+                                "lower": 0,
+                                "upper": 40,
+                                "num_points": 0
+                            },
+                            {
+                                "lower": 40,
+                                "upper": 44,
+                                "num_points": 3
+                            },
+                            {
+                                "lower": 44,
+                                "upper": 57,
+                                "num_points": 4
+                            },
+                            {
+                                "lower": 57,
+                                "upper": 69,
+                                "num_points": 5
+                            },
+                            {
+                                "lower": 69,
+                                "upper": 82,
+                                "num_points": 6
+                            },
+                            {
+                                "lower": 82,
+                                "upper": 94,
+                                "num_points": 7
+                            },
+                            {
+                                "lower": 94,
+                                "upper": 100,
+                                "num_points": 8
+                            }
+                        ]
+                    }
+                ]
+            }
+
+        ]
     },
     "Indoor Environmental Quality":{
-        "prereqs":[],
-        "credits":[]
+        "prereqs":[
+            {
+                "name": "Green Cleaning Policy",
+                "description": "To reduce levels of chemical, biological, and particulate contaminants that can compromise air quality, human health, building finishes, building systems, and the environment",
+                "link": "https://www.usgbc.org/credits/existing-buildings-interiors-existing-buildings/v41/eq108?return=/credits/Existing%20Buildings/v4.1",
+                "max_points": 0,
+                "options": [
+                    {
+                        "type": "bool",
+                        "name": "In-House Green Cleaning Policy",
+                        "description": "Have in place a green cleaning policy for the green cleaning procedures, materials, and services that are within the project and site management’s control. Include the following elements: Performance Targets Use of cleaning products and materials that meet the green cleaning criteria in EQ Credit: Green Cleaning Use of cleaning equipment that meets the criteria in EQ Credit: Green Cleaning Goals and Strategies Standard operating procedures for effective cleaning of hard floors and carpets that will be consistently used, managed, and audited. Provisions for addressing protection of building occupants during cleaning, including vulnerable populations. Guidelines for selection and appropriate use of disinfectants and sanitizers. Guidelines for safe handling and storage of cleaning chemicals used in the building, including a plan for managing hazardous spills and mishandling incidents. Strategies for reducing the toxicity of the chemicals used for laundry, ware washing, and other cleaning activities. Strategies for conserving energy, water, and chemicals during cleaning. Strategies for promoting and improving hand hygiene. Personnel Requirements for maintenance personnel including contingency planning to manage staffing shortages under a variety of conditions to ensure that basic cleaning services are met and critical cleaning needs are addressed. Include a process to obtain occupant and custodial staff input and feedback after contingency plans are implemented.Timing and frequency of training for maintenance personnel in the hazards of use, disposal, and recycling of cleaning chemicals, dispensing equipment, and packaging.",
+                        "max_points": 0
+                    },
+                    {
+                        "type": "bool",
+                        "name": "Certified Cleaning Service",
+                        "description": "Clean the project with a cleaning service certified and in good standing under one of the following: Green Seal's Environmental Standard for Commercial Cleaning Services (GS-42); or International Sanitary Supply Association (ISSA) Cleaning Industry Management Standard for Green Buildings (CIMS-GB); or Local equivalent for projects outside the U.S. In addition, work with the cleaning contractor to create goals and strategies for conserving energy, water, and chemicals during cleaning.",
+                        "max_points": 0
+                    }
+                ]
+            },
+            {
+                "name": "Environmental Tobacco Smoke Control",
+                "description": "To prevent or minimize exposure of building occupants, indoor surfaces, and ventilation air distribution systems to environmental tobacco smoke.",
+                "link": "https://www.usgbc.org/credits/existing-buildings/v41/eq106?return=/credits/Existing%20Buildings/v4.1",
+                "max_points": 0,
+                "options": [
+                    {
+                        "type": "bool",
+                        "name": "No Smoking",
+                        "description": "For this prerequisite smoking includes tobacco smoke, as well as smoke produced from the combustion of cannabis and controlled substances and the emissions produced by electronic smoking devices. Prohibit smoking in the building. Prohibit smoking outside the building except in designated smoking areas located at least 25 feet (7.5 meters) from all entries, outdoor air intakes, and operable windows. Also prohibit smoking outside the property line in spaces used for business purposes. Smoking does not have to be prohibited within 25 feet (7.5 meters) if the code explicitly prohibits it. Communicate the no-smoking policy to occupants of the building and have in place provisions for enforcement.",
+                        "max_points": 0
+                    },
+                    {
+                        "type": "bool",
+                        "name": "Compartmentalization of Smoking Areas",
+                        "description": "Prohibit smoking in all common areas of the building. Prohibit smoking outside the building except in designated smoking areas located at least 25 feet (7.5 meters) from all entries, outdoor air intakes, and operable windows. Also prohibit smoking outside the property line in spaces used for business purposes. The prohibition must be communicated in building rental or lease agreements or condo or coop association covenants and restrictions. Make provisions for enforcement. If the requirement to prohibit smoking within 25 feet (7.5 meters) cannot be implemented because of code, provide documentation of these regulations. Each unit must be compartmentalized to prevent excessive leakage between units: Weather-strip all exterior doors and operable windows in the residential units to minimize leakage from outdoors. Weather-strip all doors leading from residential units into common hallways. Minimize uncontrolled pathways for the transfer of smoke and other indoor air pollutants between residential units by sealing penetrations in the walls, ceilings, and floors and by sealing vertical chases (including utility chases, garbage chutes, mail drops, and elevator shafts) adjacent to the units. Demonstrate a maximum leakage of 0.50 cubic feet per minute per square foot (2.54 liters per second per square meter) at 50 Pa of enclosure (i.e., all surfaces enclosing the apartment, including exterior and party walls, floors, and ceilings) or establish a baseline and demonstrate a 30% improvement in leakage.",
+                        "max_points": 0
+                    }
+                ]
+            },
+            {
+                "name": "Minimum Indoor Air Quality",
+                "description": "To contribute to the comfort and well-being of building occupants by establishing minimum standards for indoor air quality (IAQ).",
+                "link": "https://www.usgbc.org/credits/existing-buildings-interiors-existing-buildings/v41/eq103?return=/credits/Existing%20Buildings/v4.1",
+                "max_points": 0,
+                "options": [
+                    {
+                        "type": "bool",
+                        "name": "Maintain Minimum Indoor Air Quality",
+                        "description": "Maintain the ventilation system equipment and associated components based on Table 8.2 of ASHRAE 62.1-2016. Include information on ventilation system operation and preventative maintenance in the current facilities requirements and operations and maintenance plan required for compliance with EA prerequisite Energy Efficiency Best Management Practices. For spaces with mechanical exhaust, test and confirm proper operation of the exhaust systems as outlined in the current facilities requirements and operations and maintenance plan. Ventilate the project spaces mechanically or naturally as follows: For mechanically ventilated spaces, measure the total quantity of outdoor air delivered and verify the results are within 10 percent of the rates outlined in the current facilities requirements and operations and maintenance plan. Measurements shall quantify the amount of outdoor air for each air handling unit serving the project. Measurements taken within five years prior to project submission are acceptable.",
+                        "max_points": 0
+                    }
+                ]
+            }
+        ],
+        "credits":[
+            {
+                "name": "Indoor Environmental Quality Performance",
+                "description": "To assess how well the building is performing for the occupants, in particular with regards to indoor air quality and comfort",
+                "link": "https://www.usgbc.org/credits/existing-buildings-interiors-existing-buildings/v41/pf905?return=/credits/Existing%20Buildings/v4.1",
+                "max_points": 20,
+                "options": [
+                    {
+                        "type": "num",
+                        "name": "LEED Points for Human Experience",
+                        "description": "Perform routine inspection and monitoring of the facility's green cleaning policy to verify that the specified strategies are being used and to identify areas in need of improvement. Additionally, conduct an annual audit in accordance with APPA Leadership in Educational Facilities' Custodial Staffing Guidelines, or a local equivalent, to determine the appearance level of the facility. The facility must score 2.5 or better",
+                        "max_points": 20,
+                        "levels": [
+                            {
+                                "lower": 0,
+                                "upper": 40,
+                                "num_points": 0
+                            },
+                            {
+                                "lower": 40,
+                                "upper": 43,
+                                "num_points": 8
+                            },
+                            {
+                                "lower": 43,
+                                "upper": 48,
+                                "num_points": 9
+                            },
+                            {
+                                "lower": 48,
+                                "upper": 53,
+                                "num_points": 10
+                            },
+                            {
+                                "lower": 53,
+                                "upper": 58,
+                                "num_points": 11
+                            },
+                            {
+                                "lower": 58,
+                                "upper": 63,
+                                "num_points": 12
+                            },
+                            {
+                                "lower": 63,
+                                "upper": 68,
+                                "num_points": 13
+                            },
+                            {
+                                "lower": 68,
+                                "upper": 73,
+                                "num_points": 14
+                            },
+                            {
+                                "lower": 73,
+                                "upper": 78,
+                                "num_points": 15
+                            },
+                            {
+                                "lower": 78,
+                                "upper": 83,
+                                "num_points": 16
+                            },
+                            {
+                                "lower": 83,
+                                "upper": 88,
+                                "num_points": 17
+                            },
+                            {
+                                "lower": 88,
+                                "upper": 93,
+                                "num_points": 18
+                            },
+                            {
+                                "lower": 93,
+                                "upper": 98,
+                                "num_points": 19
+                            },
+                            {
+                                "lower": 98,
+                                "upper": 100,
+                                "num_points": 20
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "name": "Green Cleaning",
+                "description": "To reduce levels of chemical, biological, and particulate contaminants, which can compromise human health, building finishes and systems, and the environment, by implementing effective cleaning procedures.",
+                "link": "https://www.usgbc.org/credits/existing-buildings-interiors-existing-buildings/v41/eq130?view=language&return=/credits/Existing%20Buildings/v4.1",
+                "max_points": 1,
+                "options": [
+                    {
+                        "type": "bool",
+                        "name": "Custodial Effectiveness Assessment",
+                        "description": "Perform routine inspection and monitoring of the facility's green cleaning policy to verify that the specified strategies are being used and to identify areas in need of improvement. Additionally, conduct an annual audit in accordance with APPA Leadership in Educational Facilities' Custodial Staffing Guidelines, or a local equivalent, to determine the appearance level of the facility. The facility must score 2.5 or better",
+                        "max_points": 1
+                    },
+                    {
+                        "type": "bool",
+                        "name": "Entryway Systems",
+                        "description": "Have in place permanent entryway systems at least 10 feet (3 meters) long in the primary direction of travel to capture dirt and particulates entering the building at regularly used exterior entrances. Acceptable entryway systems include permanently installed grates, grilles, slotted systems that allow for cleaning underneath, rollout mats, and any other materials manufactured as entryway systems with equal to or better performance. Maintain all on a weekly basis",
+                        "max_points": 1
+                    },
+                    {
+                        "type": "bool",
+                        "name": "Powered janitorial equipment",
+                        "description": "At least 40%, by cost, of all powered janitorial equipment (purchased, leased, or used by contractors) used to clean the project meets the following criteria. The equipment must have the following features: safeguards, such as rollers or rubber bumpers, to avoid damage to building surfaces; ergonomic design to minimize vibration, noise, and user fatigue, as reported in the user manual in accordance with ISO 5349-1 for arm vibrations, ISO 2631–1 for vibration to the whole body, and ISO 11201 for sound pressure at operator’s ear; and as applicable, environmentally preferable batteries (e.g., gel, absorbent glass mat, lithium-ion) except in applications requiring deep discharge and heavy loads where performance or battery life is reduced by the use of sealed batteries. Vacuum cleaners must be certified by the Carpet and Rug Institute Seal of Approval/Green Label Vacuum Program and operate with a maximum sound level of 70 dBA or less in accordance with ISO 11201. Carpet extraction equipment, for restorative deep cleaning, must be certified by the Carpet and Rug Institute's Seal of Approval Deep Cleaning Extractors and Seal of Approval Deep Cleaning Systems program. Propane-powered floor equipment must have high-efficiency, low-emissions engines with catalytic converters and mufflers that meet the California Air Resources Board or EPA standards for the specific engine size and operate with a sound level of 90 dBA or less, in accordance with ISO 11201. Automated scrubbing machines must be equipped with variable-speed feed pumps and either (1) on-board chemical metering to optimize the use of cleaning fluids or (2) dilution control systems for chemical refilling. Alternatively, scrubbing machines may use tap water only, with no added cleaning products.",
+                        "max_points": 1
+                    },
+                    {
+                        "type": "bool",
+                        "name": "Cleaning products and materials",
+                        "description": "At least 75% of all cleaning products and materials, by cost must meet at least one of the following standards. Compliance may be demonstrated via a product inventory or from total annual purchases. Cleaning products must meet one or more of the following standards, or a local equivalent for projects outside the U.S.: Green Seal GS-37, for general-purpose, bathroom, glass and carpet cleaners used for industrial and institutional purposes; UL EcoLogo 2792 for cleaning and degreasing compounds; UL EcoLogo 2759 for hard-surface cleaners; UL EcoLogo 2795, for carpet and upholstery care; Green Seal GS-40, for industrial and institutional floor care products; UL EcoLogo 2777 for hard-floor care; EPA Safer Choice Standard; and/or Cleaning devices that use only ionized water or electrolyzed water and have third-party-verified performance data equivalent to the other standards mentioned above (if the device is marketed for antimicrobial cleaning, performance data must demonstrate antimicrobial performance comparable to EPA Office of Pollution Prevention and Toxics and Design for the Environment requirements, as appropriate for use patterns and marketing claims). Disinfectants, metal polish, or other products not addressed by the above standards must meet one or more of the following standards (or a local equivalent for projects outside the U.S.): UL EcoLogo 2798 for digestion additives for cleaning and odor control; UL EcoLogo 2791 for drain or grease trap additives; UL EcoLogo 2796 for odor control additives; Green Seal GS-52/53, for specialty cleaning products; California Code of Regulations maximum allowable VOC levels for the specific product category; EPA Safer Choice Standard; and/or Cleaning devices that use only ionized water or electrolyzed water and have third-party-verified performance data equivalent to the other standards mentioned above (if the device is marketed for antimicrobial cleaning, performance data must demonstrate antimicrobial performance comparable to EPA Office of Pollution Prevention and Toxics and Design for the Environment requirements, as appropriate for use patterns and marketing claims). Disposable janitorial paper products and trash bags must meet the minimum requirements of one or more of the following programs, or a local equivalent for projects outside the U.S.: EPA comprehensive procurement guidelines, for janitorial paper; Green Seal GS-01, for tissue paper, paper towels and napkins; UL EcoLogo 175, for toilet tissue; UL EcoLogo 175, for hand towels Janitorial paper products derived from rapidly renewable resources or made from tree-free fibers; FSC certification, for fiber procurement; EPA comprehensive procurement guidelines, for plastic trash can liners; and/or California integrated waste management requirements, for plastic trash can liners (California Code of Regulations Title 14, Chapter 4, Article 5, or SABRC 42290-42297 Recycled Content Plastic Trash Bag Program). Hand soaps and hand sanitizers must meet one or more of the following standards, or a local equivalent for projects outside the U.S.: no antimicrobial agents (other than as a preservative) except where required by health codes and other regulations (e.g., food service and health care requirements); Green Seal GS-41, for industrial and institutional hand cleaners; UL EcoLogo 2784 for hand cleaners and hand soaps; UL EcoLogo 2783 for hand sanitizers; EPA Safer Choice Standard. For projects outside the U.S., any Type 1 eco-labeling program as defined by ISO 14024: 1999 developed by a member of the Global Ecolabelling Network may be used in lieu of Green Seal or UL Ecolabel standards.",
+                        "max_points": 1
+                    }
+                ]
+            },
+            {
+                "name": "Integrated Pest Management",
+                "description": "To minimize pest problems and exposure to pesticides.",
+                "link": "https://www.usgbc.org/credits/existing-buildings-interiors-existing-buildings/v41/eq128?return=/credits/Existing%20Buildings/v4.1",
+                "max_points": 1,
+                "options": [
+                    {
+                        "type": "bool",
+                        "name": "In-house IPM Program",
+                        "description": "Have in place an integrated pest management (IPM) plan for the building and grounds within the project boundary.",
+                        "max_points": 1
+                    },
+                    {
+                        "type": "bool",
+                        "name": "Certified IPM Service",
+                        "description": "Use an IPM service for the building and grounds within the project boundary that is certified and in good standing with GreenPro, EcoWise, GreenShield, or local equivalent.",
+                        "max_points": 1
+                    }
+                ]
+            }
+        ]
     },
     "Innovation":{
-        "prereqs":[],
-        "credits":[]
+        "prereqs":[
+        ],
+        "credits":[
+            {
+                "name": "Innovation",
+                "description": "To encourage projects to achieve exceptional or innovative performance. To encourage integration of LEED expertise and collaboration toward project priorities.",
+                "link": "https://www.usgbc.org/credits/existing-buildings-interiors-existing-buildings/v41/in101?return=/credits/Existing%20Buildings/v4.1",
+                "max_points": 1,
+                "options": [
+                    {
+                        "type": "bool",
+                        "max_points": 1,
+                        "name": "Innovation Strategy",
+                        "description": "Achieve significant, measurable environmental performance using a strategy not addressed in the rating system, including prerequisites, base points, and strategies contributing to the scores within the five performance categories."
+                    },
+                    {
+                        "type": "bool",
+                        "max_points": 1,
+                        "name": "Pilot Credit",
+                        "description": "Register for, achieve, and submit a feedback survey for one eligible pilot credit from USGBC's LEED Pilot Credit Library."
+                    }
+                ]
+            }
+        ]
     }
 }
