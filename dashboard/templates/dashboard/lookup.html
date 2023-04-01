@@ -13,7 +13,8 @@
 
 
     <script>
-            let cs = 0
+
+        let cs = 0
 
         $('.addressSearch').keyup(updateCount);
         $('.addressSearch').keydown(updateCount);
@@ -60,21 +61,35 @@
                     addList.classList.add('list-group')
 
                     data.features.forEach((address) => {
+                        let newAnchor = document.createElement('a')
+                        newAnchor.href = '#';
+
                         let newLi = document.createElement('li');
+                        newLi.id = 'addressListElement'
                         newLi.classList.add('list-group');
                         newLi.classList.add('list-group-item')
-                        newLi.innerHTML = address.properties.label;
+                        newLi.setAttribute('onmouseover', 'this.style.backgroundColor = "#7EFD83"')
+
+                        newLi.appendChild(newAnchor);
+                        newAnchor.innerHTML = address.properties.label;
 
                         addList.appendChild(newLi);
 
-                        console.log((address.properties.label));
+
                     })
 
-                    if(data.features.length === 0) {
+                    $('#addressListElement').hover(function () {
+                        $(this).css('background-color', 'yellow');
+                    })
+
+                    if (data.features.length === 0) {
                         console.log('no results')
 
-                        let noRes = docment.createElement('p');
+                        let noRes = document.createElement('p');
+                        noRes.classList.add('text-danger')
                         noRes.innerHTML = 'No results found!'
+
+                        addListDiv.appendChild(noRes);
                     }
 
                 }
