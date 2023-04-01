@@ -4,6 +4,7 @@
             "name": "Transportation Performance Score Required",
             "description": "Intent:,To reduce pollution and land development effects from transportation. Requirements: Conduct a transportation survey of building occupants on their commute patterns. Regular building occupants must be surveyed. Building occupants shall provide information on their two-way commutes over one work week and consider seasonal variations and variations in work schedules. Visitors are encouraged to be surveyed, especially if the daily average is greater than the number of regular building occupants. Visitors shall provide information on their one-way travel to the building for that day in particular. Conduct the survey at least once per year, using the required survey methodology outlined in the LEED v4.1 O+M beta guide. Use the survey results to calculate a transportation performance score for the project",
             "link": "https://www.usgbc.org/credits/existing-buildings-interiors-existing-buildings/v41/pf904?return=/credits/Existing%20Buildings/v4.1",
+            "max_points": 0,
             "options": [
                 {
                     "type": "num",
@@ -25,6 +26,7 @@
                 "name": "Transportation Performance Score",
                 "description":  "Intent:,To reduce pollution and land development effects from transportation. Requirements: Conduct a transportation survey of building occupants on their commute patterns. Regular building occupants must be surveyed. Building occupants shall provide information on their two-way commutes over one work week and consider seasonal variations and variations in work schedules. Visitors are encouraged to be surveyed, especially if the daily average is greater than the number of regular building occupants. Visitors shall provide information on their one-way travel to the building for that day in particular. Conduct the survey at least once per year, using the required survey methodology outlined in the LEED v4.1 O+M beta guide. Use the survey results to calculate a transportation performance score for the project",
                 "link": "https://www.usgbc.org/credits/existing-buildings-interiors-existing-buildings/v41/pf904?return=/credits/Existing%20Buildings/v4.1",
+                "max_points": 14,
                 "options": [
                     {
                         "type": "num",
@@ -86,7 +88,75 @@
     },
     "Sustainable Sites":{
         "prereqs":[],
-        "credits":[]
+        "credits":[
+            {
+                "name": "Rainwater Management",
+                "description": "Intent;To reduce runoff volume and improve water quality by replicating the natural hydrology and water;balance of the site, based on historical conditions and undeveloped ecosystems in the region.;Requirements;Use low-impact development (LID) practices to infiltrate, evapotranspirate, collect and reuse water;onsite from 25% of the impervious surfaces for the 95th percentile storm event.;Establish and implement an annual inspection and maintenance program of all rainwater management;facilities to assure continued performance.;Document the annual inspections, including identification of areas of erosion, maintenance needs, and;repairs. Perform necessary maintenance, repairs, or stabilization within 60 days of inspection.",
+                "link": "https://www.usgbc.org/credits/existing-buildings/v41/ss109?return=/credits/Existing%20Buildings/v4.1",
+                "max_points": 1,
+                "options": [
+                    {
+                        "type": "bool",
+                        "name": "Rainwater management criteria",
+                        "desc": "Use low-impact development (LID) practices to infiltrate, evapotranspirate, collect and reuse water;onsite from 25% of the impervious surfaces for the 95th percentile storm event.;Establish and implement an annual inspection and maintenance program of all rainwater management;facilities to assure continued performance.;Document the annual inspections, including identification of areas of erosion, maintenance needs, and;repairs. Perform necessary maintenance, repairs, or stabilization within 60 days of inspection.",
+                        "max_points": 1,
+                        "levels":[]
+                    }
+                ]
+            },
+            {
+                "name": "Heat Island Reduction",
+                "description": "Intent;To minimize effects on microclimates and human and wildlife habitats by reducing heat islands.",
+                "link": "https://www.usgbc.org/credits/existing-buildings/v41/ss111?return=/credits/Existing%20Buildings/v4.1",
+                "max_points": 1,
+                "options": [
+                    {
+                        "type": "bool",
+                        "name": "Heat Island Reduction management criteria",
+                        "desc": "Have in place strategies to minimize the project's overall contribution to heat island effects and that;meet the following criterion:;Area of;Nonroof;Measures;Area of HighReflectance;Roof;Area of;Vegetated;Roof;Total Site;Paving Area;Total Roof;Area;———— + —————— + —————— ≥ +;0.50 0.75 0.50;Alternatively, an SRI and SR weighted average approach may be used to calculate compliance.;Use any combination of the following strategies.",
+                        "max_points": 1,
+                        "levels":[]
+                    }
+                ]
+            },
+            {
+                "name": "Light Pollution Reduction",
+                "description": "Intent;To increase night sky access, improve nighttime visibility, and reduce the consequences of development;for wildlife and people.",
+                "link": "https://www.usgbc.org/credits/existing-buildings/v41/ss113?return=/credits/Existing%20Buildings/v4.1",
+                "max_points": 1,
+                "options": [
+                    {
+                        "type": "bool",
+                        "name": "Fixture Shielding",
+                        "desc": "Shield all exterior fixtures (where the sum of the mean lamp lumens for that fixture exceeds 2,500) such;that the installed fixtures do not directly emit any light at a vertical angle more than 90 degrees from;straight down.;",
+                        "max_points": 1,
+                        "levels":[]
+                    },
+                    {
+                        "type": "bool",
+                        "name": "Perimeter Measurements",
+                        "desc": "Measure the night illumination levels at regularly spaced points on the project boundary, taking the;measurements with the building’s exterior and site lights both on and off. At least eight measurements;are required, at a maximum spacing of 100 feet (30 meters) apart. The illumination level measured with;the lights on must not be more than 20% above the level measured with the lights off. ",
+                        "max_points": 1,
+                        "levels":[]
+                    }
+                ]
+            },
+            {
+                "name": "Site Management",
+                "description": "Intent;To provide environmentally sensitive site management practices that protect and enhance habitat,;reduce pollutants and waste, protect soils and hydrology and reduce site domestic water use.;Requirements;Conduct a site assessment to identify and document natural areas providing habitat.;Have in place a site management plan that demonstrates how the following best practices are met:; Monitor and eradicate invasive and exotic plant species from natural habitat areas.; Manage snow and ice in ways that limit degradation of water quality, surrounding plants and soil;health from chemical deicer applications.; Prevent erosion by maintaining vegetative cover, and restore any eroded soils.; Reduce noise and air pollution resulting from gasoline powered equipment.; Divert from landfills 100% of plant material waste for composting reuse.; Reduce fertilizer use to only as needed for plant health applications based on soil testing. Eliminate;preventive applications of herbicides, pesticides and fungicides applying only as needed for;occurrences.; Prepare an Integrated Pest Management plan.; Add one or more inches of organic matter mulch, such as compost, to soil surfaces in planting areas;annually.; Irrigate vegetation, other than planted containers, only with automatic controlled systems utilizing;either rain shutoff, moisture sensing or weather based controls.; Monitor irrigation systems at least bi-weekly during the operating season and correct any leaks,;breaks, inappropriate water usage, or incorrect timing.; Store materials and equipment to prevent air and site contamination.",
+                "link": "https://www.usgbc.org/credits/existing-buildings/v41/ss118?return=/credits/Existing%20Buildings/v4.1",
+                "max_points": 1,
+                "options": [
+                    {
+                        "type": "bool",
+                        "name": "Rainwater management criteria",
+                        "desc": "Conduct a site assessment to identify and document natural areas providing habitat.;Have in place a site management plan that demonstrates how the following best practices are met:; Monitor and eradicate invasive and exotic plant species from natural habitat areas.; Manage snow and ice in ways that limit degradation of water quality, surrounding plants and soil;health from chemical deicer applications.; Prevent erosion by maintaining vegetative cover, and restore any eroded soils.; Reduce noise and air pollution resulting from gasoline powered equipment.; Divert from landfills 100% of plant material waste for composting reuse.; Reduce fertilizer use to only as needed for plant health applications based on soil testing. Eliminate;preventive applications of herbicides, pesticides and fungicides applying only as needed for;occurrences.; Prepare an Integrated Pest Management plan.; Add one or more inches of organic matter mulch, such as compost, to soil surfaces in planting areas;annually.; Irrigate vegetation, other than planted containers, only with automatic controlled systems utilizing;either rain shutoff, moisture sensing or weather based controls.; Monitor irrigation systems at least bi-weekly during the operating season and correct any leaks,;breaks, inappropriate water usage, or incorrect timing.; Store materials and equipment to prevent air and site contamination.",
+                        "max_points": 1,
+                        "levels":[]
+                    }
+                ]
+            }
+        ]
     },
     "Water Efficiency":{
         "prereqs":[],
