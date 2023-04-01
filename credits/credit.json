@@ -1,0 +1,30 @@
+{
+    "Location and Transportation":{
+        "prereqs":[],
+        "credits":[]
+    },
+    "Sustainable Sites":{
+        "prereqs":[],
+        "credits":[]
+    },
+    "Water Efficiency":{
+        "prereqs":[],
+        "credits":[]
+    },
+    "Energy and Atmosphere":{
+        "prereqs":[],
+        "credits":[]
+    },
+    "Materials and Resources":{
+        "prereqs":[],
+        "credits":[]
+    },
+    "Indoor Environmental Quality":{
+        "prereqs":[],
+        "credits":[]
+    },
+    "Innovation":{
+        "prereqs":[],
+        "credits":[]
+    }
+}
