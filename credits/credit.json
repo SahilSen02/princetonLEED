@@ -8,12 +8,12 @@
                 {
                     "type": "num",
                     "name": "Minimum transportation performance score",
-                    "max points": 0,
+                    "max_points": 0,
                     "description": "If TPS is below 40 you do not qualify",
                     "levels": [
                         {"lower": 40,
                         "upper": 100,
-                        "num. points": 0
+                        "num_points": 0
                         }
 
                     ]
@@ -30,52 +30,52 @@
                         "type": "num",
                         "name": "TPS",
                         "description": "",
-                        "max points": 14,
+                        "max_points": 14,
                         "levels": [
                             {
                                 "lower": 40,
                                 "upper": 47,
-                                "num. points": 6
+                                "num_points": 6
                             },
                             {
                                 "lower": 47,
                                 "upper": 54,
-                                "num. points": 7
+                                "num_points": 7
                             },
                             {
                                 "lower": 54,
                                 "upper": 61,
-                                "num. points": 8
+                                "num_points": 8
                             },
                             {
                                 "lower": 61,
                                 "upper": 68,
-                                "num. points":9
+                                "num_points":9
                             },
                             {
                                 "lower": 68,
                                 "upper": 75,
-                                "num. points": 10
+                                "num_points": 10
                             },
                             {
                                 "lower": 75,
                                 "upper": 83,
-                                "num. points": 11
+                                "num_points": 11
                             },
                             {
                                 "lower": 83,
                                 "upper": 90,
-                                "num. points": 12
+                                "num_points": 12
                             },
                             {
                                 "lower": 90,
                                 "upper": 97,
-                                "num. points": 13
+                                "num_points": 13
                             },
                             {
                                 "lower": 97,
                                 "upper": 100,
-                                "num. points": 14
+                                "num_points": 14
                             }
                         ]
 
