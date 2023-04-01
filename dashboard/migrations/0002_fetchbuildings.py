@@ -3,10 +3,12 @@
 from django.db import migrations
 import requests
 import json
+import re
 
 
 def fetch_buildings(apps, schema_editor):
-    Building = apps.get_model('dashboard', 'Building')
+    LL84Building = apps.get_model('dashboard', 'LL84Building')
+    BINLookup = apps.get_model('dashboard', 'BINLookup')
     response_API = requests.get(
         'https://data.cityofnewyork.us/resource/usc3-8zwd.json')
     data = response_API.text
@@ -17,8 +19,8 @@ def fetch_buildings(apps, schema_editor):
         for key in b:
             if b[key] == "Not Available":
                 b[key] = False
-        # print(buildings_json[i])
-        building = Building.objects.create(
+
+        building_obj = LL84Building.objects.create(
             street_address_1=b["address_1"] if b["address_1"] else False,
             city=b["city"] if b["city"] else False,
             state="NY",
@@ -28,7 +30,7 @@ def fetch_buildings(apps, schema_editor):
             latitude=b['latitude'] if "latitude" in b else False,
             property_name=b["property_name"] if "property_name" in b else False,
             nyc_bbl=b["nyc_borough_block_and_lot_bbl"] if "nyc_borough_block_and_lot_bbl" in b else False,
-            nyc_bin=b["nyc_building_identification_number_bin"] if "nyc_building_identification_number_bin" in b else False,
+            # nyc_bin=b["nyc_building_identification_number_bin"] if "nyc_building_identification_number_bin" in b else False,
             primary_property_type_calculated=b["primary_property_type_portfolio_manager_calculated"] if "primary_property_type_portfolio_manager_calculated" in b else False,
             primary_property_type_selected=b["primary_property_type_self_selected"] if
             "primary_property_type_self_selected" in b else False,
@@ -57,7 +59,12 @@ def fetch_buildings(apps, schema_editor):
             gfa=b["property_gfa_self_reported_ft"] if "property_gfa_self_reported_ft" in b else False,
             water_use=b["water_use_all_water_sources_kgal"] if "water_use_all_water_sources_kgal" in b else False
         )
-        # building.save()
+
+        bins = re.split(r'[;|,]\s', b["nyc_building_identification_number_bin"]
+                        ) if "nyc_building_identification_number_bin" in b and b["nyc_building_identification_number_bin"] else False
+        if bins:
+            for bin in bins:
+                BINLookup.objects.create(nyc_bin=bin, building=building_obj)
 
 
 class Migration(migrations.Migration):
