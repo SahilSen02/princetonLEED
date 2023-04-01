@@ -19,7 +19,7 @@ def building(request, bin):
     try:
         building = LL84Building.objects.get(nyc_bin__contains=bin)
     except:
-        pass
+        return notfound(request)
     else:
         building = LL84Building.objects.get(nyc_bin__contains=bin)
 
@@ -43,4 +43,12 @@ def building(request, bin):
 
 
 def areacompare(request, bin):
-    pass
+    try:
+        building = LL84Building.objects.get(nyc_bin__contains=bin)
+    except:
+        return notfound(request)
+    else:
+        building = LL84Building.objects.get(nyc_bin__contains=bin)
+
+def notfound(request):
+    return render(request, 'dashboard/buildingdoesnotexist.html')
