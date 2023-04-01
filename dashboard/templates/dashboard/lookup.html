@@ -64,19 +64,21 @@
                     addList.classList.add('list-group')
 
                     data.features.forEach((address) => {
-                        let newAnchor = document.createElement('a')
-                        newAnchor.href = '#';
 
                         let newLi = document.createElement('li');
                         newLi.id = 'addressListElement'
                         newLi.classList.add('list-group');
                         newLi.classList.add('list-group-item')
-                        newLi.setAttribute('onmouseover', 'this.style.backgroundColor = "#E3E3E3"')
+                        newLi.setAttribute('onmouseover', 'this.style.backgroundColor = "#CEE2D2"')
                         newLi.setAttribute('onmouseout', 'this.style.backgroundColor = "White"')
-                        newLi.setAttribute('onclick', 'window.location.replace("#")')
+                        let bin = address.properties.addendum.pad.bin
+                        let buildurl = "{% url 'building' 123 %}".replace('123', bin);
+                        let replaceFunc = 'location.href = "' + buildurl + '"'
 
-                        newLi.appendChild(newAnchor);
-                        newAnchor.innerHTML = address.properties.label;
+                        console.log(typeof(replaceFunc))
+                        newLi.setAttribute('onclick', replaceFunc)
+
+                        newLi.innerHTML = address.properties.label;
 
                         addList.appendChild(newLi);
 
