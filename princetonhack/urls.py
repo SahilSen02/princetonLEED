@@ -17,8 +17,9 @@ from django.contrib import admin
 from django.urls import path, include
 
 import dashboard
-
+from dashboard import views as dashboard_views
 urlpatterns = [
-    path("admin/", admin.site.urls),
+    path("admin/", admin.site.urls, name='admin'),
     path("dashboard/", include('dashboard.urls')),
+    path("", dashboard_views.index, name='homepage'),
 ]
