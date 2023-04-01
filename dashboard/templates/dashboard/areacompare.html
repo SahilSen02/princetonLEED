@@ -1,5 +1,14 @@
 {% extends 'dashboard/base.html' %}
 {% block content %}
+
+    <script>
+        const config = {
+            type: 'doughnut',
+            data: data,
+        };
+
+        
+    </script>
     <h2 class="display-3">{{ building.street_address_1 }}, {{ building.borough }}</h2>
     <h4 class="text-muted">How do you compare to buildings of similar sizes?</h4>
     <hr class="my-4">

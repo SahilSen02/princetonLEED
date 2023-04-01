@@ -64,7 +64,7 @@ def fetch_buildings(apps, schema_editor):
                 egrid_output_emissions_rate=b["eGRID Output Emissions Rate (kgCO2e/MBtu)"] if
                 "eGRID Output Emissions Rate (kgCO2e/MBtu)" in b else False,
                 leed_project_id=b["LEED US Project ID"] if "LEED US Project ID" in b else False,
-                gfa=b["Property GFA - Self-Reported (ft¬≤)"] if "Property GFA - Self-Reported (ft¬≤)" in b else False,
+                gfa=b["Property GFA - Self-Reported (ft¬≤)"] if "Property GFA - Self-Reported (ftÂ²)" in b else False,
                 water_use=b["Water Use (All Water Sources) (kgal)"] if "Water Use (All Water Sources) (kgal)" in b else False
             )
 
