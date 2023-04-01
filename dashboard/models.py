@@ -14,7 +14,7 @@ class LL84Building(models.Model):
 
     property_name = models.CharField(max_length=100)
     nyc_bbl = models.CharField(max_length=20)
-    # nyc_bin = models.CharField(max_length=10)
+    nyc_bin = models.CharField(max_length=10)
 
     primary_property_type_calculated = models.CharField(max_length=100)
     primary_property_type_selected = models.CharField(max_length=100)
