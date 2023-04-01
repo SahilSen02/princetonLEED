@@ -9,6 +9,10 @@
             integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
             crossorigin="anonymous"></script>
 
+    <script
+            src="https://code.jquery.com/jquery-3.6.4.js"
+            integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E="
+            crossorigin="anonymous"></script>
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -29,17 +33,17 @@
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
                     {% if currentpage == 'home' %}
-                        <a class="nav-link active" aria-current="page" href="#">LEEDer</a>
+                        <a class="nav-link active" aria-current="page" href="{% url 'lookup' %}">LEEDer</a>
                     {% else %}
                         <a class="nav-link" aria-current="page" href="{% url 'index' %}">LEEDer</a>
                     {% endif %}
 
                 </li>
                 <li class="nav-item">
-                    {% if currentpage == 'topspender' %}
+                    {% if currentpage == 'lookup' %}
                         <a class="nav-link active" href="#">Lookup</a>
                     {% else %}
-                        <a class="nav-link" href="#">Lookup</a>
+                        <a class="nav-link" href="{% url 'lookup' %}">Lookup</a>
                     {% endif %}
                 </li>
                 <!-- <li class="nav-item dropdown">
@@ -102,6 +106,7 @@
             </div>
         </div>
     </div>
+
 </main>
 </body>
 </html>

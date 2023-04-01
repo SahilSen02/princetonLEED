@@ -1,0 +1,27 @@
+{% extends 'dashboard/base.html' %}
+
+{% block content %}
+
+    <h3 class="display-3">Search your building by address:</h3>
+
+    <label for="addressSearch">
+        <input type="text" class="addressSearch">
+    </label>
+
+    <div id="characters">
+
+    </div>
+
+    <script>
+        console.log('hi')
+        $('.addressSearch').on(input, updateCount);
+
+        function updateCount() {
+            var cs = $(this).val().length;
+            console.log(cs)
+            $('#characters').text(cs)
+
+        }
+    </script>
+{% endblock content %}
+

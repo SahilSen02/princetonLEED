@@ -5,3 +5,6 @@ from django.http import HttpResponse
 
 def index(request):
     return render(request, 'dashboard/index.html')
+
+def lookup(request):
+    return render(request, 'dashboard/lookup.html')
