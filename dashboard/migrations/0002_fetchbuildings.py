@@ -10,36 +10,20 @@ import os
 absolute_path = os.path.dirname(__file__)
 relative_path = "src/lib"
 full_path = os.path.join(absolute_path, relative_path)
-print(full_path)
 
 
 def fetch_buildings(apps, schema_editor):
     LL84Building = apps.get_model('dashboard', 'LL84Building')
     BINLookup = apps.get_model('dashboard', 'BINLookup')
 
-    data = []
     absolute_path = os.path.dirname(__file__)
     relative_path = "../LL84_2022.csv"
     full_path = os.path.join(absolute_path, relative_path)
     print(full_path)
 
-    # Open a csv reader called DictReader
-
     with open(full_path, encoding='utf-8') as csvf:
         csvReader = csv.DictReader(csvf)
-
-        # Convert each row into a dictionary
-        # and add it to data
-        # print(csvReader[0])
         for b in csvReader:
-            # data.append[row]
-
-            # response_API = requests.get(
-            #     'https://data.cityofnewyork.us/resource/usc3-8zwd.json')
-            # data = response_API.text
-            # buildings_json = json.loads(data)
-            # for b in buildings_json:
-            print(b)
             for key in b:
                 if b[key] == "Not Available":
                     b[key] = False

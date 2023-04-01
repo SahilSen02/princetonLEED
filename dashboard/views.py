@@ -49,16 +49,19 @@ def areacompare(request, bin, size=25000):
     footrange = int(size / 2)
     area = building.gfa
 
-    query = LL84Building.objects.filter(gfa__range=[area - footrange, area + footrange])
+    query = LL84Building.objects.filter(
+        gfa__range=[area - footrange, area + footrange])
 
     numBuildings = len(query)
     numLeed = len(query.exclude(leed_project_id='False'))
 
-    emissionStats = query.aggregate(Avg('total_ghg_emissions'), StdDev('total_ghg_emissions'))
+    emissionStats = query.aggregate(
+        Avg('total_ghg_emissions'), StdDev('total_ghg_emissions'))
 
     waterStats = query.aggregate(Avg('water_use'), StdDev('water_use'))
 
-    enStarStats = query.aggregate(Avg('energy_star_score'), StdDev('energy_star_score'))
+    enStarStats = query.aggregate(
+        Avg('energy_star_score'), StdDev('energy_star_score'))
 
     energyUseStats = query.aggregate(Avg('weather_normalized_electricity_use'),
                                      StdDev('weather_normalized_electricity_use'))
@@ -66,7 +69,8 @@ def areacompare(request, bin, size=25000):
     energyIntStats = query.aggregate(Avg('weather_normalized_electricity_intensity'),
                                      StdDev('weather_normalized_electricity_intensity'))
 
-    emissionsIntStats = query.aggregate(Avg('total_ghg_emissions_intensity'), StdDev('total_ghg_emissions_intensity'))
+    emissionsIntStats = query.aggregate(
+        Avg('total_ghg_emissions_intensity'), StdDev('total_ghg_emissions_intensity'))
 
     context = {
         'building': building,
@@ -85,3 +89,6 @@ def areacompare(request, bin, size=25000):
 
 def notfound(request):
     return render(request, 'dashboard/buildingdoesnotexist.html')
+
+
+# def
