@@ -101,7 +101,9 @@
                     {% if user.is_superuser %}
                         <li class="list-group-item list-group-item-light"><a href="{% url 'admin:index' %}">Admin
                             Page</a></li>
+
                     {% endif %}
+                        <li class="list-group-item list-group-item-light"><a href="{% url 'classify' %}">Classify</a></li>
                 </ul>
             </div>
         </div>

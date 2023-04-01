@@ -8,3 +8,6 @@ def index(request):
 
 def lookup(request):
     return render(request, 'dashboard/lookup.html')
+
+def classify(request):
+    return render(request, 'dashboard/classify.html')

@@ -17,12 +17,31 @@
         function updateCount() {
             cs = $(this).val().length;
 
-            $('#characters').text(cs)
+            csval = $(this).val();
+
+            $('#characters').text(cs);
 
             if(cs > 3) {
 
+                let apicall = 'https://geosearch.planninglabs.nyc/v2/autocomplete?text=' + csval;
 
-                fetch()
+                let request = new XMLHttpRequest();
+
+                request.open('GET', apicall, true);
+
+                request.onload = function() {
+
+                    let data = JSON.parse(this.response);
+
+                    console.log(typeof(data));
+
+                    data.features.forEach((address) => {
+                        console.log((address.properties.label));
+                    })
+
+                }
+
+                request.send()
             }
 
         }
