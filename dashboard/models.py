@@ -39,7 +39,7 @@ class LL84Building(models.Model):
     water_use = models.FloatField()
 
     def __str__(self):
-        return self.property_name
+        return str(self.property_name)
 
 
 class BINLookup(models.Model):
@@ -47,4 +47,4 @@ class BINLookup(models.Model):
     building = models.ForeignKey(LL84Building, on_delete=models.CASCADE)
 
     def __str__(self):
-        return self.building
+        return str(self.building)

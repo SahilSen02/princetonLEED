@@ -2,27 +2,30 @@
 
 {% block content %}
 
-<h1>{{ bin }}</h1>
+    <h1>{{ bin }}</h1>
 
-<div class="container">
+    <h2>{{ building.street_address_1 }}</h2>
 
-    <h2>Dropdowns</h2>
-    <p>The .dropdown class is used to indicate a dropdown menu.</p>
-    <p>Use the .dropdown-menu class to actually build the dropdown menu.</p>
-    <p>To open the dropdown menu, use a button or a link with a class of .dropdown-toggle and data-toggle="dropdown".</p>                                          
-    <div class="dropdown">
-      <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Dropdown Example
-      <span class="caret"></span></button>
-      <ul class="dropdown-menu">
-        <li><a href="#">Core</a></li>
-        <li><a href="#">Schools</a></li>
-        <li><a href="#">Retail</a></li>
-        <li><a href="#">Data Center</a></li>
-        <li><a href="#">Warehouse or Distribution Center</a></li>
-        <li><a href="#">Hospitality</a></li>
-        <li><a href="#">Healthcare</a></li>
-      </ul>
+    <div class="container">
+
+        <h2>Dropdowns</h2>
+        <p>The .dropdown class is used to indicate a dropdown menu.</p>
+        <p>Use the .dropdown-menu class to actually build the dropdown menu.</p>
+        <p>To open the dropdown menu, use a button or a link with a class of .dropdown-toggle and
+            data-toggle="dropdown".</p>
+        <div class="dropdown">
+            <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Dropdown Example
+                <span class="caret"></span></button>
+            <ul class="dropdown-menu">
+                <li><a href="#">Core</a></li>
+                <li><a href="#">Schools</a></li>
+                <li><a href="#">Retail</a></li>
+                <li><a href="#">Data Center</a></li>
+                <li><a href="#">Warehouse or Distribution Center</a></li>
+                <li><a href="#">Hospitality</a></li>
+                <li><a href="#">Healthcare</a></li>
+            </ul>
+        </div>
     </div>
-  </div>
 
 {% endblock content %}
