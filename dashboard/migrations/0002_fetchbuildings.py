@@ -3,66 +3,93 @@
 from django.db import migrations
 import requests
 import json
+import csv
 import re
+import os
+
+absolute_path = os.path.dirname(__file__)
+relative_path = "src/lib"
+full_path = os.path.join(absolute_path, relative_path)
+print(full_path)
 
 
 def fetch_buildings(apps, schema_editor):
     LL84Building = apps.get_model('dashboard', 'LL84Building')
     BINLookup = apps.get_model('dashboard', 'BINLookup')
-    response_API = requests.get(
-        'https://data.cityofnewyork.us/resource/usc3-8zwd.json')
-    data = response_API.text
-    buildings_json = json.loads(data)
-    for b in buildings_json:
-        for key in b:
-            if b[key] == "Not Available":
-                b[key] = False
 
-        building_obj = LL84Building.objects.create(
-            street_address_1=b["address_1"] if b["address_1"] else False,
-            city=b["city"] if b["city"] else False,
-            state="NY",
-            postcode=b['postcode'] if "postcode" in b else False,
-            borough=b['borough'] if "borough" in b else False,
-            longitude=b['longitude'] if "longitude" in b else False,
-            latitude=b['latitude'] if "latitude" in b else False,
-            property_name=b["property_name"] if "property_name" in b else False,
-            nyc_bbl=b["nyc_borough_block_and_lot_bbl"] if "nyc_borough_block_and_lot_bbl" in b else False,
-            nyc_bin=b["nyc_building_identification_number_bin"] if "nyc_building_identification_number_bin" in b else False,
-            primary_property_type_calculated=b["primary_property_type_portfolio_manager_calculated"] if "primary_property_type_portfolio_manager_calculated" in b else False,
-            primary_property_type_selected=b["primary_property_type_self_selected"] if
-            "primary_property_type_self_selected" in b else False,
-            property_use_types=b["list_of_all_property_use_types_at_property"] if
-            "list_of_all_property_use_types_at_property" in b else False,
-            year_built=b["year_built"] if "year_built" in b else False,
-            energy_star_score=b["energy_star_score"] if "energy_star_score" in b else False,
-            energy_star_years=b["energy_star_certification_year_s_certified_score"] if
-            "energy_star_certification_year_s_certified_score" in b else False,
-            weather_normalized_energy_use=b["weather_normalized_site_energy_use_kbtu"] if
-            "weather_normalized_site_energy_use_kbtu" in b else False,
-            weather_normalized_electricity_use=b["weather_normalized_site_electricity_kwh"] if
-            "weather_normalized_site_electricity_kwh" in b else False,
-            weather_normalized_electricity_intensity=b["weather_normalized_site_electricity_intensity_kwh_ft"] if
-            "weather_normalized_site_electricity_intensity_kwh_ft" in b else False,
-            weather_normalized_natural_gas_use=b["weather_normalized_site_natural_gas_use_therms"] if
-            "weather_normalized_site_natural_gas_use_therms" in b else False,
-            weather_normalized_natural_gas_intensity=b["weather_normalized_site_natural_gas_intensity_therms_ft"] if
-            "weather_normalized_site_natural_gas_intensity_therms_ft" in b else False,
-            total_ghg_emissions=b["total_ghg_emissions_metric_tons_co2e"] if "total_ghg_emissions_metric_tons_co2e" in b else False,
-            total_ghg_emissions_intensity=b["total_ghg_emissions_intensity_kgco2e_ft"] if
-            "total_ghg_emissions_intensity_kgco2e_ft" in b else False,
-            egrid_output_emissions_rate=b["egrid_output_emissions_rate_kgco2e_mbtu"] if
-            "egrid_output_emissions_rate_kgco2e_mbtu" in b else False,
-            leed_project_id=b["leed_us_project_id"] if "leed_us_project_id" in b else False,
-            gfa=b["property_gfa_self_reported_ft"] if "property_gfa_self_reported_ft" in b else False,
-            water_use=b["water_use_all_water_sources_kgal"] if "water_use_all_water_sources_kgal" in b else False
-        )
+    data = []
+    absolute_path = os.path.dirname(__file__)
+    relative_path = "../LL84_2022.csv"
+    full_path = os.path.join(absolute_path, relative_path)
+    print(full_path)
 
-        bins = re.split(r'[;|,]\s', b["nyc_building_identification_number_bin"]
-                        ) if "nyc_building_identification_number_bin" in b and b["nyc_building_identification_number_bin"] else False
-        if bins:
-            for bin in bins:
-                BINLookup.objects.create(nyc_bin=bin, building=building_obj)
+    # Open a csv reader called DictReader
+
+    with open(full_path, encoding='utf-8') as csvf:
+        csvReader = csv.DictReader(csvf)
+
+        # Convert each row into a dictionary
+        # and add it to data
+        # print(csvReader[0])
+        for b in csvReader:
+            # data.append[row]
+
+            # response_API = requests.get(
+            #     'https://data.cityofnewyork.us/resource/usc3-8zwd.json')
+            # data = response_API.text
+            # buildings_json = json.loads(data)
+            # for b in buildings_json:
+            print(b)
+            for key in b:
+                if b[key] == "Not Available":
+                    b[key] = False
+
+            building_obj = LL84Building.objects.create(
+                street_address_1=b["Address 1"] if b["Address 1"] else False,
+                city=b["City"] if b["City"] else False,
+                state="NY",
+                postcode=b['Postcode'] if "Postcode" in b else False,
+                borough=b['Borough'] if "Borough" in b else False,
+                longitude=b['Longitude'] if "Longitude" in b and b['Longitude'] else False,
+                latitude=b['Latitude'] if "Latitude" in b and b['Latitude'] else False,
+                property_name=b["Property Name"] if "Property Name" in b else False,
+                nyc_bbl=b["NYC Borough, Block and Lot (BBL)"] if "NYC Borough, Block and Lot (BBL)" in b else False,
+                nyc_bin=b["NYC Building Identification Number (BIN)"] if "NYC Building Identification Number (BIN)" in b else False,
+                primary_property_type_calculated=b["Primary Property Type - Portfolio Manager-Calculated"] if "Primary Property Type - Portfolio Manager-Calculated" in b else False,
+                primary_property_type_selected=b["Primary Property Type - Self Selected"] if
+                "Primary Property Type - Self Selected" in b else False,
+                property_use_types=b["List of All Property Use Types at Property"] if
+                "List of All Property Use Types at Property" in b else False,
+                year_built=b["Year Built"] if "Year Built" in b else False,
+                energy_star_score=b["ENERGY STAR Score"] if "ENERGY STAR Score" in b else False,
+                energy_star_years=b["ENERGY STAR Certification - Year(s) Certified (Score)"] if
+                "ENERGY STAR Certification - Year(s) Certified (Score)" in b else False,
+                weather_normalized_energy_use=b["Weather Normalized Site Energy Use (kBtu)"] if
+                "Weather Normalized Site Energy Use (kBtu)" in b else False,
+                weather_normalized_electricity_use=b["Weather Normalized Site Electricity (kWh)"] if
+                "Weather Normalized Site Electricity (kWh)" in b else False,
+                weather_normalized_electricity_intensity=b["Weather Normalized Site Electricity Intensity (kWh/ft¬≤)"] if
+                "Weather Normalized Site Electricity Intensity (kWh/ft¬≤)" in b else False,
+                weather_normalized_natural_gas_use=b["Weather Normalized Site Natural Gas Use (therms)"] if
+                "Weather Normalized Site Natural Gas Use (therms)" in b else False,
+                weather_normalized_natural_gas_intensity=b["Weather Normalized Site Natural Gas Intensity (therms/ft¬≤)"] if
+                "Weather Normalized Site Natural Gas Intensity (therms/ft¬≤)" in b else False,
+                total_ghg_emissions=b["Total GHG Emissions (Metric Tons CO2e)"] if "Total GHG Emissions (Metric Tons CO2e)" in b else False,
+                total_ghg_emissions_intensity=b["Total GHG Emissions Intensity (kgCO2e/ft¬≤)"] if
+                "Total GHG Emissions Intensity (kgCO2e/ft¬≤)" in b else False,
+                egrid_output_emissions_rate=b["eGRID Output Emissions Rate (kgCO2e/MBtu)"] if
+                "eGRID Output Emissions Rate (kgCO2e/MBtu)" in b else False,
+                leed_project_id=b["LEED US Project ID"] if "LEED US Project ID" in b else False,
+                gfa=b["Property GFA - Self-Reported (ft¬≤)"] if "Property GFA - Self-Reported (ft¬≤)" in b else False,
+                water_use=b["Water Use (All Water Sources) (kgal)"] if "Water Use (All Water Sources) (kgal)" in b else False
+            )
+
+            bins = re.split(r'[;|,]\s', b["NYC Building Identification Number (BIN)"]
+                            ) if "NYC Building Identification Number (BIN)" in b and b["NYC Building Identification Number (BIN)"] else False
+            if bins:
+                for bin in bins:
+                    BINLookup.objects.create(
+                        nyc_bin=bin, building=building_obj)
 
 
 class Migration(migrations.Migration):
