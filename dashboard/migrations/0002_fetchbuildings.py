@@ -13,9 +13,7 @@ def fetch_buildings(apps, schema_editor):
         'https://data.cityofnewyork.us/resource/usc3-8zwd.json')
     data = response_API.text
     buildings_json = json.loads(data)
-    i = 0
     for b in buildings_json:
-        print(i)
         for key in b:
             if b[key] == "Not Available":
                 b[key] = False
@@ -30,7 +28,7 @@ def fetch_buildings(apps, schema_editor):
             latitude=b['latitude'] if "latitude" in b else False,
             property_name=b["property_name"] if "property_name" in b else False,
             nyc_bbl=b["nyc_borough_block_and_lot_bbl"] if "nyc_borough_block_and_lot_bbl" in b else False,
-            # nyc_bin=b["nyc_building_identification_number_bin"] if "nyc_building_identification_number_bin" in b else False,
+            nyc_bin=b["nyc_building_identification_number_bin"] if "nyc_building_identification_number_bin" in b else False,
             primary_property_type_calculated=b["primary_property_type_portfolio_manager_calculated"] if "primary_property_type_portfolio_manager_calculated" in b else False,
             primary_property_type_selected=b["primary_property_type_self_selected"] if
             "primary_property_type_self_selected" in b else False,
