@@ -4,15 +4,25 @@
 
     <h3 class="display-3">Search your building by address:</h3>
 
-    <label for="addressSearch">
-        <input type="text" class="addressSearch">
-    </label>
+    <div class="input-group mb-3 w-100">
+        <label for="addressSearch" class="col-md-12">
+            <input type="search" class="addressSearch col-md-12">
+        </label>
+    </div>
+
+
+    <div class="addressListDiv" id="addressListDiv">
+    </div>
+
 
     <script>
 
-        $('.addressSearch').keyup(updateCount)
-                            .keydown(updateCount);
         let cs = 0
+
+        $('.addressSearch').keyup(updateCount);
+        $('.addressSearch').keydown(updateCount);
+        $('.addressSearch').on('search', updateCount);
+
 
         function updateCount() {
             cs = $(this).val().length;
@@ -21,7 +31,17 @@
 
             $('#characters').text(cs);
 
-            if(cs > 3) {
+            if (cs === 0) {
+
+                let addListDiv = document.getElementById('addressListDiv')
+
+                while (addListDiv.firstChild) {
+                    addListDiv.removeChild(addListDiv.firstChild);
+                }
+
+            }
+
+            if (cs > 3) {
 
                 let apicall = 'https://geosearch.planninglabs.nyc/v2/autocomplete?text=' + csval;
 
@@ -29,15 +49,51 @@
 
                 request.open('GET', apicall, true);
 
-                request.onload = function() {
+                request.onload = function () {
 
                     let data = JSON.parse(this.response);
 
-                    console.log(typeof(data));
+                    let addListDiv = document.getElementById('addressListDiv')
+
+                    while (addListDiv.firstChild) {
+                        addListDiv.removeChild(addListDiv.firstChild);
+                    }
+                    let addList = document.createElement('ul')
+
+                    addListDiv.appendChild(addList)
+                    addList.classList.add('list-group')
 
                     data.features.forEach((address) => {
-                        console.log((address.properties.label));
+
+                        let newLi = document.createElement('li');
+                        newLi.id = 'addressListElement'
+                        newLi.classList.add('list-group');
+                        newLi.classList.add('list-group-item')
+                        newLi.setAttribute('onmouseover', 'this.style.backgroundColor = "#CEE2D2"')
+                        newLi.setAttribute('onmouseout', 'this.style.backgroundColor = "White"')
+                        let bin = address.properties.addendum.pad.bin
+                        let buildurl = "{% url 'building' 123 %}".replace('123', bin);
+                        let replaceFunc = 'location.href = "' + buildurl + '"'
+
+                        console.log(typeof(replaceFunc))
+                        newLi.setAttribute('onclick', replaceFunc)
+
+                        newLi.innerHTML = address.properties.label;
+
+                        addList.appendChild(newLi);
+
+
                     })
+
+                    if (data.features.length === 0) {
+                        console.log('no results')
+
+                        let noRes = document.createElement('p');
+                        noRes.classList.add('text-danger')
+                        noRes.innerHTML = 'No results found!'
+
+                        addListDiv.appendChild(noRes);
+                    }
 
                 }
 
@@ -46,7 +102,6 @@
 
         }
 
-        console.log(cs)
     </script>
 {% endblock content %}
 
