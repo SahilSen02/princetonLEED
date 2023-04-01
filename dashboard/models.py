@@ -3,7 +3,7 @@ from django.db import models
 # Create your models here.
 
 
-class Building(models.Model):
+class LL84Building(models.Model):
     street_address_1 = models.CharField(max_length=70)
     city = models.CharField(max_length=70)
     state = models.CharField(max_length=2)
@@ -14,7 +14,7 @@ class Building(models.Model):
 
     property_name = models.CharField(max_length=100)
     nyc_bbl = models.CharField(max_length=20)
-    nyc_bin = models.CharField(max_length=10)
+    # nyc_bin = models.CharField(max_length=10)
 
     primary_property_type_calculated = models.CharField(max_length=100)
     primary_property_type_selected = models.CharField(max_length=100)
@@ -44,7 +44,7 @@ class Building(models.Model):
 
 class BINLookup(models.Model):
     nyc_bin = models.CharField(max_length=10)
-    building = models.ForeignKey(Building, on_delete=models.CASCADE)
+    building = models.ForeignKey(LL84Building, on_delete=models.CASCADE)
 
     def __str__(self):
         return self.building
