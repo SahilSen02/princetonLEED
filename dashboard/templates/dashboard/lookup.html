@@ -4,9 +4,12 @@
 
     <h3 class="display-3">Search your building by address:</h3>
 
-    <label for="addressSearch">
-        <input type="search" class="addressSearch">
-    </label>
+    <div class="input-group mb-3 w-100">
+        <label for="addressSearch" class="col-md-12">
+            <input type="search" class="addressSearch col-md-12">
+        </label>
+    </div>
+
 
     <div class="addressListDiv" id="addressListDiv">
     </div>
@@ -68,7 +71,9 @@
                         newLi.id = 'addressListElement'
                         newLi.classList.add('list-group');
                         newLi.classList.add('list-group-item')
-                        newLi.setAttribute('onmouseover', 'this.style.backgroundColor = "#7EFD83"')
+                        newLi.setAttribute('onmouseover', 'this.style.backgroundColor = "#E3E3E3"')
+                        newLi.setAttribute('onmouseout', 'this.style.backgroundColor = "White"')
+                        newLi.setAttribute('onclick', 'window.location.replace("#")')
 
                         newLi.appendChild(newAnchor);
                         newAnchor.innerHTML = address.properties.label;
@@ -76,10 +81,6 @@
                         addList.appendChild(newLi);
 
 
-                    })
-
-                    $('#addressListElement').hover(function () {
-                        $(this).css('background-color', 'yellow');
                     })
 
                     if (data.features.length === 0) {
