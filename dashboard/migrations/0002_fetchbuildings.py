@@ -23,7 +23,10 @@ def fetch_buildings(apps, schema_editor):
 
     with open(full_path, encoding='utf-8') as csvf:
         csvReader = csv.DictReader(csvf)
+        i = 0
         for b in csvReader:
+            if i % 3000 == 0:
+                print((i/3000*10), "%", end=" ", flush=True)
             for key in b:
                 if b[key] == "Not Available":
                     b[key] = False
@@ -52,19 +55,20 @@ def fetch_buildings(apps, schema_editor):
                 "Weather Normalized Site Energy Use (kBtu)" in b else False,
                 weather_normalized_electricity_use=b["Weather Normalized Site Electricity (kWh)"] if
                 "Weather Normalized Site Electricity (kWh)" in b else False,
-                weather_normalized_electricity_intensity=b["Weather Normalized Site Electricity Intensity (kWh/ft¬≤)"] if
-                "Weather Normalized Site Electricity Intensity (kWh/ft¬≤)" in b else False,
+                weather_normalized_electricity_intensity=b["Weather Normalized Site Electricity Intensity (kWh/ft²)"] if
+                "Weather Normalized Site Electricity Intensity (kWh/ft²)" in b else False,
                 weather_normalized_natural_gas_use=b["Weather Normalized Site Natural Gas Use (therms)"] if
                 "Weather Normalized Site Natural Gas Use (therms)" in b else False,
-                weather_normalized_natural_gas_intensity=b["Weather Normalized Site Natural Gas Intensity (therms/ft¬≤)"] if
-                "Weather Normalized Site Natural Gas Intensity (therms/ft¬≤)" in b else False,
+                weather_normalized_natural_gas_intensity=b["Weather Normalized Site Natural Gas Intensity (therms/ft²)"] if
+                "Weather Normalized Site Natural Gas Intensity (therms/ft²)" in b else False,
                 total_ghg_emissions=b["Total GHG Emissions (Metric Tons CO2e)"] if "Total GHG Emissions (Metric Tons CO2e)" in b else False,
-                total_ghg_emissions_intensity=b["Total GHG Emissions Intensity (kgCO2e/ft¬≤)"] if
-                "Total GHG Emissions Intensity (kgCO2e/ft¬≤)" in b else False,
+                total_ghg_emissions_intensity=b["Total GHG Emissions Intensity (kgCO2e/ft²)"] if
+                "Total GHG Emissions Intensity (kgCO2e/ft²)" in b else False,
                 egrid_output_emissions_rate=b["eGRID Output Emissions Rate (kgCO2e/MBtu)"] if
                 "eGRID Output Emissions Rate (kgCO2e/MBtu)" in b else False,
                 leed_project_id=b["LEED US Project ID"] if "LEED US Project ID" in b else False,
-                gfa=b["Property GFA - Self-Reported (ft¬≤)"] if "Property GFA - Self-Reported (ft¬≤)" in b else False,
+                gfa=int(float(b["Property GFA - Self-Reported (ft²)"]
+                              )) if "Property GFA - Self-Reported (ft²)" in b else False,
                 water_use=b["Water Use (All Water Sources) (kgal)"] if "Water Use (All Water Sources) (kgal)" in b else False
             )
 
@@ -74,6 +78,7 @@ def fetch_buildings(apps, schema_editor):
                 for bin in bins:
                     BINLookup.objects.create(
                         nyc_bin=bin, building=building_obj)
+            i += 1
 
 
 class Migration(migrations.Migration):
