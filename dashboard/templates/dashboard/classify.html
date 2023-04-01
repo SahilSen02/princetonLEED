@@ -2,29 +2,47 @@
 
 {% block content %}
 
-
     <h1 class="display-3">{{ building.street_address_1 }}, {{ borough }}</h1>
+    <hr class="my-4">
 
-    <div class="container">
+    <div class="row">
+        <div class="col-md-6">
 
-        <h2>Dropdowns</h2>
-        <p>The .dropdown class is used to indicate a dropdown menu.</p>
-        <p>Use the .dropdown-menu class to actually build the dropdown menu.</p>
-        <p>To open the dropdown menu, use a button or a link with a class of .dropdown-toggle and
-            data-toggle="dropdown".</p>
-        <div class="dropdown">
-            <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Dropdown Example
-                <span class="caret"></span></button>
-            <ul class="dropdown-menu">
-                <li><a href="#">Core</a></li>
-                <li><a href="#">Schools</a></li>
-                <li><a href="#">Retail</a></li>
-                <li><a href="#">Data Center</a></li>
-                <li><a href="#">Warehouse or Distribution Center</a></li>
-                <li><a href="#">Hospitality</a></li>
-                <li><a href="#">Healthcare</a></li>
+            <h6 class="display-6">Quick Facts:</h6>
+            <ul class="list-group">
+                <li class="list-group list-group-item">Square Footage: {{ building.gfa|floatformat:"0g" }} ft. squared
+                </li>
+                <li class="list-group list-group-item">Year Built: {{ building.year_built }}</li>
+
+                {% if building.energy_star_score != False %}
+                    <li class="list-group list-group-item">EnergyStar Score (Out of
+                        100): {{ building.energy_star_score }}</li>
+                {% else %}
+                    <li class="list-group list-group-item">EnergyStar Score (Out of 100): Unavailable</li>
+                {% endif %}
+                {% if building.total_ghg_emissions != False %}
+                    <li class="list-group list-group-item">Carbon Emissions: {{ building.total_ghg_emissions }} Metric
+                        Tons of CO2
+                    </li>
+                {% else %}
+                    <li class="list-group list-group-item">Carbon Emissions: Unavailable</li>
+                {% endif %}
             </ul>
+
+            <p class="text-muted">*using publicly available data from <a
+                    href="https://data.cityofnewyork.us/Environment/Energy-and-Water-Data-Disclosure-for-Local-Law-84-/7x5e-2fxh">here</a>
+            </p>
+
+        </div>
+        <div class="col-md-6">
+            <h6 class="display-6">Sustainability Reports</h6>
+
+
         </div>
     </div>
+
+
+
+
 
 {% endblock content %}

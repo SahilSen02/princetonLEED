@@ -13,7 +13,13 @@ def classify(request):
     return render(request, 'dashboard/classify.html')
 
 def building(request, bin):
-    building = LL84Building.objects.get(nyc_bin__contains=bin)
+
+    try:
+        building = LL84Building.objects.get(nyc_bin__contains=bin)
+    except:
+        pass
+    else:
+        building = LL84Building.objects.get(nyc_bin__contains=bin)
 
     boroughcodes = {
         'BRONX': 'The Bronx',
