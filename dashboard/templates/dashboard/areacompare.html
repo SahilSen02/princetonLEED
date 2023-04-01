@@ -1,22 +1,13 @@
 {% extends 'dashboard/base.html' %}
 {% block content %}
-
-    <script>
-        const config = {
-            type: 'doughnut',
-            data: data,
-        };
-
-
-    </script>
     <h2 class="display-3">{{ building.street_address_1 }}, {{ building.borough }}</h2>
     <h4 class="text-muted">How do you compare to buildings of similar sizes?</h4>
     <hr class="my-4">
 
-    <container id="graphs">
+    <div class="container-fluid" id="graphs">
         <div class="row">
             <div class="col-md-6">
-                <p>Building Existing Leed Certification</p>
+                <canvas id="myChart"></canvas>
             </div>
             <div class="col-md-6">
                 <p>Pie Chart of Leed Certification</p>
@@ -46,5 +37,30 @@
                 <p>Carbon Emissions Intensity Graphs</p>
             </div>
         </div>
-    </container>
+    </div>
+
+
+    <script>
+        const ctx = document.getElementById('myChart');
+
+        new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+                datasets: [{
+                    label: '# of Votes',
+                    data: [12, 19, 3, 5, 2, 3],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+    </script>
+
 {% endblock content %}
