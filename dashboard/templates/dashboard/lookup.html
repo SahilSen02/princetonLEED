@@ -8,20 +8,26 @@
         <input type="text" class="addressSearch">
     </label>
 
-    <div id="characters">
-
-    </div>
-
     <script>
-        console.log('hi')
-        $('.addressSearch').on(input, updateCount);
+
+        $('.addressSearch').keyup(updateCount)
+                            .keydown(updateCount);
+        let cs = 0
 
         function updateCount() {
-            var cs = $(this).val().length;
-            console.log(cs)
+            cs = $(this).val().length;
+
             $('#characters').text(cs)
 
+            if(cs > 3) {
+
+
+                fetch()
+            }
+
         }
+
+        console.log(cs)
     </script>
 {% endblock content %}
 
