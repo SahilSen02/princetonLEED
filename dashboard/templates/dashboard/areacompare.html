@@ -1,4 +1,41 @@
 {% extends 'dashboard/base.html' %}
 {% block content %}
-    <p>{{ numBuildings }}, {{ numLeed }}, {{ emissionStats }}, {{ building.gfa }}</p>
+    <h2 class="display-3">{{ building.street_address_1 }}, {{ building.borough }}</h2>
+    <h4 class="text-muted">How do you compare to buildings of similar sizes?</h4>
+    <hr class="my-4">
+
+    <container id="graphs">
+        <div class="row">
+            <div class="col-md-6">
+                <p>Building Existing Leed Certification</p>
+            </div>
+            <div class="col-md-6">
+                <p>Pie Chart of Leed Certification</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <p>Electricity Use Graphs</p>
+            </div>
+            <div class="col-md-6">
+                <p>Electricity Intensity Graphs</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <p>Energy Star Score Graph</p>
+            </div>
+            <div class="col-md-6">
+                <p>Water Use Graphs</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <p>Carbon Emissions Graphs</p>
+            </div>
+            <div class="col-md-6">
+                <p>Carbon Emissions Intensity Graphs</p>
+            </div>
+        </div>
+    </container>
 {% endblock content %}

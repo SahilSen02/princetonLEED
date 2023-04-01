@@ -3,6 +3,7 @@ from dashboard.models import LL84Building, BINLookup
 from django.http import HttpResponse
 from django.db.models import Avg, Max, Min, StdDev
 
+
 def index(request):
     return render(request, 'dashboard/index.html')
 
@@ -43,13 +44,12 @@ def building(request, bin):
 
 
 def areacompare(request, bin, size=25000):
-
     building = LL84Building.objects.get(nyc_bin__contains=bin)
 
-    footrange = int(size/2)
+    footrange = int(size / 2)
     area = building.gfa
 
-    query = LL84Building.objects.filter(gfa__range=[area-footrange, area+footrange])
+    query = LL84Building.objects.filter(gfa__range=[area - footrange, area + footrange])
 
     numBuildings = len(query)
     numLeed = len(query.exclude(leed_project_id='False'))
@@ -60,13 +60,13 @@ def areacompare(request, bin, size=25000):
 
     enStarStats = query.aggregate(Avg('energy_star_score'), StdDev('energy_star_score'))
 
-    energyUseStats = query.aggregate(Avg('weather_normalized_electricity_use'), StdDev('weather_normalized_electricity_use'))
+    energyUseStats = query.aggregate(Avg('weather_normalized_electricity_use'),
+                                     StdDev('weather_normalized_electricity_use'))
 
-    energyIntStats = query.aggregate(Avg('weather_normalized_electricity_intensity'), StdDev('weather_normalized_electricity_intensity'))
+    energyIntStats = query.aggregate(Avg('weather_normalized_electricity_intensity'),
+                                     StdDev('weather_normalized_electricity_intensity'))
 
-
-
-
+    emissionsIntStats = query.aggregate(Avg('total_ghg_emissions_intensity'), StdDev('total_ghg_emissions_intensity'))
 
     context = {
         'building': building,
@@ -74,9 +74,13 @@ def areacompare(request, bin, size=25000):
         'numBuildings': numBuildings,
         'numLeed': numLeed,
         'emissionStats': emissionStats,
+        'waterStats': waterStats,
+        'enStarStats': enStarStats,
+        'energyUseStats': energyUseStats,
+        'energyIntStats': energyIntStats,
+        'emissionsIntStats': emissionsIntStats,
     }
     return render(request, 'dashboard/areacompare.html', context=context)
-
 
 
 def notfound(request):
