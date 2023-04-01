@@ -159,11 +159,111 @@
         ]
     },
     "Water Efficiency":{
-        "prereqs":[],
-        "credits":[]
+        "prereqs":[{
+            "name": "Water Efficiency Score Required",
+            "description": "Intent;To support water management and reduce water consumption.;Requirements;Have permanently installed water meters that measure the total potable water use for the project and associated grounds. All potable or reclaimed water supplied to the project must be metered.;For Interiors projects, have permanently installed sub-meters that measure total potable water use for any fixtures or fittings in the project scope. Alternately, interiors projects may pro-rate water use, using occupancy and base building water use over twelve consecutive months.;Measure total potable water use on a monthly basis for twelve consecutive months (one full year).;Input the twelve months of potable water use data into the Arc Platform, and calculate a Water Performance Score for the project.;For initial certification, obtain a minimum Water Performance Score of 40. Additional points for this prerequisite are awarded for Water Performance Scores above 40, according to Table 1.;Interiors projects that do not have fixtures or fixture fittings in the project scope are exempt from the requirement to obtain a minimum Water Performance Score of 40 but must provide twelve months of base building potable water use data, pro-rated by occupancy, and calculate a Water Performance Score for the project.",
+            "link": "https://www.usgbc.org/credits/existing-buildings-interiors-existing-buildings/v41/pf902?return=/credits/Existing%20Buildings/v4.1",
+            "max_points": 0,
+            "options": [
+                {
+                    "type": "num",
+                    "name": "Minimum WE performance score",
+                    "max_points": 0,
+                    "description": "If WE is below 40 you do not qualify",
+                    "levels": [
+                        {"lower": 40,
+                        "upper": 100,
+                        "num_points": 0
+                        }
+
+                    ]
+                }
+            ]
+        }],
+        "credits":[
+            {
+                "type": "num",
+                "name": "WE performance score",
+                "max_points": 15,
+                "description": "The water performance score rates the building's total water consumption against the total water consumption of comparable high-performing LEED certified buildings.;The score is a value from 1-100 based on the project's water consumption per occupant and water consumption per floor area.",
+                "levels": [
+                    {"lower": 40,
+                    "upper": 44,
+                    "num_points": 6
+                    },
+                    {"lower": 44,
+                    "upper": 50,
+                    "num_points": 7
+                    },
+                    {"lower": 50,
+                    "upper": 57,
+                    "num_points": 8
+                    },
+                    {"lower": 57,
+                    "upper": 64,
+                    "num_points": 9
+                    },
+                    {"lower": 64,
+                    "upper": 70,
+                    "num_points": 10
+                    },
+                    {"lower": 70,
+                    "upper": 77,
+                    "num_points": 11
+                    },
+                    {"lower": 77,
+                    "upper": 84,
+                    "num_points": 12
+                    },
+                    {"lower": 84,
+                    "upper": 90,
+                    "num_points": 13
+                    },
+                    {"lower": 90,
+                    "upper": 97,
+                    "num_points": 14
+                    },
+                    {"lower": 97,
+                    "upper": 100,
+                    "num_points": 15
+                    }
+                ]
+            }
+        ]
     },
     "Energy and Atmosphere":{
-        "prereqs":[],
+        "prereqs":[
+            {
+                "name": "Energy Efficiency Best Practices Management",
+                "description": "Intent;To promote continuity of information to ensure that energy-efficient operating strategies are;maintained and provide a foundation for training and system analysis.;Requirements;Conduct an energy audit that meets both the requirements of the ASHRAE preliminary energy use;analysis and an ASHRAE Level 1 walk-through assessment identified in the ASHRAE Procedures for;Commercial Building Energy Audits or equivalent. Projects in Europe may use the energy audit;procedure defined in EN 16247-2:2014.",
+                "link": "https://www.usgbc.org/credits/existing-buildings-interiors-existing-buildings/v41/ea102?return=/credits/Existing%20Buildings/v4.1",
+                "max_points": 0,
+                "options": [
+                    {
+                        "type": "bool",
+                        "name": "Energy Efficiency Best Management Practices",
+                        "desc": "Conduct an energy audit that meets both the requirements of the ASHRAE preliminary energy use analysis and an ASHRAE Level 1 walk-through assessment identified in the ASHRAE Procedures for Commercial Building Energy Audits or equivalent. Projects in Europe may use the energy audit procedure defined in EN 16247-2:2014. Prepare and maintain a current facilities requirements and operations and maintenance plan that contains the information necessary to operate the project efficiently.",
+                        "max_points": 0,
+                        "levels":[]
+                    }
+                ]
+            },
+            {
+                "name": "Fundamental Refrigerant Management",
+                "description": "Do not use chlorofluorocarbon (CFC)-based refrigerants in heating, ventilating, air-conditioning, and;refrigeration (HVAC&R) systems unless a third-party audit shows that system replacement or;conversion is not economically feasible or unless a phase-out plan for CFC-based refrigerants is in place.;Phase-out plans should be scheduled for completion within 10 years. The replacement or conversion of;HVAC&R equipment is considered not economically feasible if the simple payback of the replacement or;conversion is greater than 10 years.",
+                "link": "https://www.usgbc.org/credits/existing-buildings-interiors-existing-buildings/v41/ea109?return=/credits/Existing%20Buildings/v4.1",
+                "max_points": 0,
+                "options": [
+                    {
+                        "type": "bool",
+                        "name": "Fundamental Refrigerant Management",
+                        "desc": "If CFC-based refrigerants are maintained in the project, reduce annual leakage to 5% or less using the procedures in the Clean Air Act, Title VI, Rule 608, governing refrigerant management and reporting (or a local equivalent for projects outside the U.S.), and reduce the total leakage over the remaining life of the unit to less than 30% of its refrigerant charge. Small HVAC&R units (defined as containing less than 0.5 pound [225 grams] of refrigerant), standard refrigerators, small water coolers, and any other cooling equipment that contains less than 0.5 pound (225 grams) of refrigerant are exempt.",
+                        "max_points": 0,
+                        "levels":[]
+                    }
+                ]
+            }
+        ],
         "credits":[]
     },
     "Materials and Resources":{
