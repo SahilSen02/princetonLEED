@@ -1,7 +1,88 @@
 {
     "Location and Transportation":{
-        "prereqs":[],
-        "credits":[]
+        "prereqs":[{
+            "name": "Transportation Performance Score Required",
+            "description": "Intent:,To reduce pollution and land development effects from transportation. Requirements: Conduct a transportation survey of building occupants on their commute patterns. Regular building occupants must be surveyed. Building occupants shall provide information on their two-way commutes over one work week and consider seasonal variations and variations in work schedules. Visitors are encouraged to be surveyed, especially if the daily average is greater than the number of regular building occupants. Visitors shall provide information on their one-way travel to the building for that day in particular. Conduct the survey at least once per year, using the required survey methodology outlined in the LEED v4.1 O+M beta guide. Use the survey results to calculate a transportation performance score for the project",
+            "link": "https://www.usgbc.org/credits/existing-buildings-interiors-existing-buildings/v41/pf904?return=/credits/Existing%20Buildings/v4.1",
+            "options": [
+                {
+                    "type": "num",
+                    "name": "Minimum transportation performance score",
+                    "max points": 0,
+                    "description": "If TPS is below 40 you do not qualify",
+                    "levels": [
+                        {"lower": 40,
+                        "upper": 100,
+                        "num. points": 0
+                        }
+
+                    ]
+                }
+            ]
+        }],
+        "credits":[
+            {
+                "name": "Transportation Performance Score",
+                "description":  "Intent:,To reduce pollution and land development effects from transportation. Requirements: Conduct a transportation survey of building occupants on their commute patterns. Regular building occupants must be surveyed. Building occupants shall provide information on their two-way commutes over one work week and consider seasonal variations and variations in work schedules. Visitors are encouraged to be surveyed, especially if the daily average is greater than the number of regular building occupants. Visitors shall provide information on their one-way travel to the building for that day in particular. Conduct the survey at least once per year, using the required survey methodology outlined in the LEED v4.1 O+M beta guide. Use the survey results to calculate a transportation performance score for the project",
+                "link": "https://www.usgbc.org/credits/existing-buildings-interiors-existing-buildings/v41/pf904?return=/credits/Existing%20Buildings/v4.1",
+                "options": [
+                    {
+                        "type": "num",
+                        "name": "TPS",
+                        "description": "",
+                        "max points": 14,
+                        "levels": [
+                            {
+                                "lower": 40,
+                                "upper": 47,
+                                "num. points": 6
+                            },
+                            {
+                                "lower": 47,
+                                "upper": 54,
+                                "num. points": 7
+                            },
+                            {
+                                "lower": 54,
+                                "upper": 61,
+                                "num. points": 8
+                            },
+                            {
+                                "lower": 61,
+                                "upper": 68,
+                                "num. points":9
+                            },
+                            {
+                                "lower": 68,
+                                "upper": 75,
+                                "num. points": 10
+                            },
+                            {
+                                "lower": 75,
+                                "upper": 83,
+                                "num. points": 11
+                            },
+                            {
+                                "lower": 83,
+                                "upper": 90,
+                                "num. points": 12
+                            },
+                            {
+                                "lower": 90,
+                                "upper": 97,
+                                "num. points": 13
+                            },
+                            {
+                                "lower": 97,
+                                "upper": 100,
+                                "num. points": 14
+                            }
+                        ]
+
+                    }
+                ]
+            }
+        ]
     },
     "Sustainable Sites":{
         "prereqs":[],
