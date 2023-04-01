@@ -39,19 +39,12 @@ class Building(models.Model):
     water_use = models.FloatField()
 
     def __str__(self):
-        return self.full_name
+        return self.property_name
 
 
 class BINLookup(models.Model):
     nyc_bin = models.CharField(max_length=10)
     building = models.ForeignKey(Building, on_delete=models.CASCADE)
 
-
-# class Article(models.Model):
-#     pub_date = models.DateField()
-#     headline = models.CharField(max_length=200)
-#     content = models.TextField()
-#     reporter = models.ForeignKey(Reporter, on_delete=models.CASCADE)
-
-#     def __str__(self):
-#         return self.headline
+    def __str__(self):
+        return self.building
