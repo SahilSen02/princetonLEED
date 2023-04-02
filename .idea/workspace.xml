@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="bff98fb2-7882-47ec-ba80-d215d0a32c17" name="Changes" comment="">
+    <list default="true" id="bff98fb2-7882-47ec-ba80-d215d0a32c17" name="Changes" comment="requirements.txt adding numpy">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dashboard/templates/dashboard/areacompare.html" beforeDir="false" afterPath="$PROJECT_DIR$/dashboard/templates/dashboard/areacompare.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dashboard/templates/dashboard/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/dashboard/templates/dashboard/base.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dashboard/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/dashboard/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -83,8 +83,23 @@
       <workItem from="1680317662435" duration="19220000" />
       <workItem from="1680361951991" duration="2342000" />
       <workItem from="1680364535761" duration="11895000" />
-      <workItem from="1680381099836" duration="2485000" />
+      <workItem from="1680381099836" duration="13422000" />
     </task>
+    <task id="LOCAL-00001" summary="Added correct chart.js installation and started work">
+      <created>1680383844021</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1680383844021</updated>
+    </task>
+    <task id="LOCAL-00002" summary="requirements.txt adding numpy">
+      <created>1680401195179</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1680401195179</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -100,5 +115,10 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Added correct chart.js installation and started work" />
+    <MESSAGE value="requirements.txt adding numpy" />
+    <option name="LAST_COMMIT_MESSAGE" value="requirements.txt adding numpy" />
   </component>
 </project>

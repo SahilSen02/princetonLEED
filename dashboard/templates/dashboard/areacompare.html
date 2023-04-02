@@ -7,26 +7,26 @@
     <div class="container-fluid" id="graphs">
         <div class="row">
             <div class="col-md-6">
-                <canvas id="myChart"></canvas>
+                <h6 class="text-primary text-center"><u>Energy Star Score</u></h6>
+                <canvas id="enChart"></canvas>
+                <p class="text-info">Building Energy Star Score: {{ building.energy_star_score }}</p>
             </div>
             <div class="col-md-6">
-                <p>Pie Chart of Leed Certification</p>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-6">
-                <p>Electricity Use Graphs</p>
-            </div>
-            <div class="col-md-6">
-                <p>Electricity Intensity Graphs</p>
+                <h6 class="text-primary text-center"><u>Water Consumption</u></h6>
+                <canvas id="waterChart"></canvas>
+                <p class="text-info">Building Water Consumption: {{ building.water_use }} kilogallons</p>
             </div>
         </div>
         <div class="row">
             <div class="col-md-6">
-                <p>Energy Star Score Graph</p>
+                <h6 class="text-primary text-center"><u>Carbon Emissions</u></h6>
+                <canvas id="emChart"></canvas>
+                <p class="text-info">Building Carbon Emissions: {{ building.total_ghg_emissions }} tons of CO2</p>
             </div>
             <div class="col-md-6">
-                <p>Water Use Graphs</p>
+                <h6 class="text-primary text-center"><u>Carbon Emissions Intensity</u></h6>
+                <canvas id="emIntChart"></canvas>
+                <p class="text-info">Building Emission Intensity: {{ building.water_use }} kilograms of CO2 per Square Foot</p>
             </div>
         </div>
         <div class="row">
@@ -41,26 +41,222 @@
 
 
     <script>
-        const ctx = document.getElementById('myChart');
 
-        new Chart(ctx, {
+        let enStarBins = [];
+        let enStarVals = [];
+
+        {% for val in enStarBins %}
+            enStarBins.push({{ val }})
+        {% endfor %}
+
+        {% for val in enStarVals %}
+            enStarVals.push({{ val }})
+        {% endfor %}
+
+        let enStarColors = new Array(enStarVals.length)
+        enStarColors.fill('green')
+
+        enStarColors[{{ enStarIndex }}] = '#02F51B';
+
+
+        const ctx = document.getElementById('enChart');
+
+        let enChart = new Chart(ctx, {
             type: 'bar',
             data: {
-                labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+                labels: enStarBins,
                 datasets: [{
-                    label: '# of Votes',
-                    data: [12, 19, 3, 5, 2, 3],
-                    borderWidth: 1
+                    label: ['Buildings'],
+                    data: enStarVals,
+                    backgroundColor: enStarColors,
+                    hoverOffset: 4
                 }]
             },
             options: {
                 scales: {
+                    x: {
+                        title: {
+                            display: true,
+                            text: 'Energy Star Score',
+                        }
+                    },
                     y: {
-                        beginAtZero: true
+                        ticks: {
+                            beginAtZero: true
+                        },
+                        title: {
+                            display: true,
+                            text: 'Number of Buildings'
+                        }
+                    }
+                },
+                animation: {}
+            }
+        });
+
+        let waterBins = [];
+        let waterVals = [];
+
+        {% for val in waterBins %}
+            waterBins.push({{ val }})
+        {% endfor %}
+
+        {% for val in waterVals %}
+            waterVals.push({{ val }})
+        {% endfor %}
+
+        let waterColors = new Array(waterVals.length)
+        waterColors.fill('green')
+
+        waterColors[{{ waterIndex }}] = '#02F51B';
+
+
+        const wtr = document.getElementById('waterChart');
+
+        let wtrChart = new Chart(wtr, {
+            type: 'bar',
+            data: {
+                labels: waterBins,
+                datasets: [{
+                    label: ['Buildings'],
+                    data: waterVals,
+                    backgroundColor: waterColors,
+                    hoverOffset: 4
+                }]
+            },
+            options: {
+                scales: {
+                    x: {
+                        title: {
+                            display: true,
+                            text: 'Water Consumption',
+                        }
+                    },
+                    y: {
+                        ticks: {
+                            beginAtZero: true
+                        },
+                        title: {
+                            display: true,
+                            text: 'Number of Buildings'
+                        }
+                    }
+                },
+                animation: {},
+                plugins: {
+                    tooltip: {
+                        callbacks: {}
                     }
                 }
             }
         });
+
+        let emBins = [];
+        let emVals = [];
+
+        {% for val in emissionBins %}
+            emBins.push({{ val }})
+        {% endfor %}
+
+        {% for val in emissionVals %}
+            emVals.push({{ val }})
+        {% endfor %}
+
+        let emColors = new Array(emVals.length)
+        emColors.fill('green')
+
+        emColors[{{ emissionIndex }}] = '#02F51B';
+
+
+        const emx = document.getElementById('emChart');
+
+        let emChart = new Chart(emx, {
+            type: 'bar',
+            data: {
+                labels: emBins,
+                datasets: [{
+                    label: ['Buildings'],
+                    data: emVals,
+                    backgroundColor: emColors,
+                    hoverOffset: 4
+                }]
+            },
+            options: {
+                scales: {
+                    x: {
+                        title: {
+                            display: true,
+                            text: 'Carbon Emissions (Tons CO2)',
+                        }
+                    },
+                    y: {
+                        ticks: {
+                            beginAtZero: true
+                        },
+                        title: {
+                            display: true,
+                            text: 'Number of Buildings'
+                        }
+                    }
+                },
+                animation: {}
+            }
+        });
+
+        let emIntBins = [];
+        let emIntVals = [];
+
+        {% for val in emIntBins %}
+            emIntBins.push({{ val }})
+        {% endfor %}
+
+        {% for val in emIntVals %}
+            emIntVals.push({{ val }})
+        {% endfor %}
+
+        let emIntColors = new Array(emIntVals.length)
+        emIntColors.fill('green')
+
+        emIntColors[{{ emIntIndex }}] = '#02F51B';
+
+        const emintx = document.getElementById('emIntChart');
+
+        let emIntChart = new Chart(emintx, {
+            type: 'bar',
+            data: {
+                labels: emIntBins,
+                datasets: [{
+                    label: ['Buildings'],
+                    data: emIntVals,
+                    backgroundColor: emIntColors,
+                    hoverOffset: 4
+                }]
+            },
+            options: {
+                scales: {
+                    x: {
+                        title: {
+                            display: true,
+                            text: 'Carbon Emissions (kilograms CO2/square foot)',
+                        }
+                    },
+                    y: {
+                        ticks: {
+                            beginAtZero: true
+                        },
+                        title: {
+                            display: true,
+                            text: 'Number of Buildings'
+                        }
+                    }
+                },
+                animation: {}
+            }
+        });
+
+
+
+
     </script>
 
 {% endblock content %}
