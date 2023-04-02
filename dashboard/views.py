@@ -161,9 +161,13 @@ def areacompare(request, id, size=50000):
 def purposecompare(request, id):
     building = LL84Building.objects.get(id=id)
 
+    cohort = BuildingStat.objects.get(id=id).cohort_id
+
+
+
     area = building.gfa
 
-    query = LL84Building.objects.filter(primary_property_type_selected=building.primary_property_type_selected)
+    query = LL84Building.objects.filter(buildingstat__cohort_id=cohort)
 
     numBuildings = len(query)
 
@@ -262,6 +266,7 @@ def purposecompare(request, id):
 
 def zipcodecompare(request, id):
     building = LL84Building.objects.get(id=id)
+
 
     area = building.gfa
 

@@ -2,12 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="bff98fb2-7882-47ec-ba80-d215d0a32c17" name="Changes" comment="requirements.txt adding numpy">
-      <change afterPath="$PROJECT_DIR$/dashboard/forms.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dashboard/templates/dashboard/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/dashboard/templates/dashboard/base.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dashboard/templates/dashboard/rankings.html" beforeDir="false" afterPath="$PROJECT_DIR$/dashboard/templates/dashboard/rankings.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dashboard/templates/dashboard/rankingsrev.html" beforeDir="false" afterPath="$PROJECT_DIR$/dashboard/templates/dashboard/rankingsrev.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dashboard/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/dashboard/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/princetonhack/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/princetonhack/settings.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -99,7 +96,7 @@
       <workItem from="1680418586980" duration="180000" />
       <workItem from="1680419239888" duration="704000" />
       <workItem from="1680419972502" duration="2285000" />
-      <workItem from="1680422315083" duration="4714000" />
+      <workItem from="1680422315083" duration="5636000" />
     </task>
     <task id="LOCAL-00001" summary="Added correct chart.js installation and started work">
       <created>1680383844021</created>
