@@ -20,11 +20,14 @@ def classify(request):
 
 def building(request, bin):
     try:
-        building = LL84Building.objects.get(nyc_bin__contains=bin)
+        print((bin))
+        buildID = BINLookup.objects.get(nyc_bin=str(bin)).building_id
+
+        building = LL84Building.objects.get(id=buildID)
     except:
         return notfound(request)
     else:
-        building = LL84Building.objects.get(nyc_bin__contains=bin)
+        building = LL84Building.objects.get(id=buildID)
 
     boroughcodes = {
         'BRONX': 'The Bronx',
@@ -40,13 +43,15 @@ def building(request, bin):
         'building': building,
         'codes': boroughcodes,
         'borough': str(building.borough),
+        'id': building.id
     }
 
     return render(request, 'dashboard/classify.html', context=context)
 
 
-def areacompare(request, bin, size=50000):
-    building = LL84Building.objects.get(nyc_bin__contains=bin)
+def areacompare(request, id, size=50000):
+    print(id)
+    building = LL84Building.objects.get(id=id)
 
     footrange = int(size / 2)
     area = building.gfa

@@ -3,7 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="bff98fb2-7882-47ec-ba80-d215d0a32c17" name="Changes" comment="requirements.txt adding numpy">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dashboard/templates/dashboard/areacompare.html" beforeDir="false" afterPath="$PROJECT_DIR$/dashboard/templates/dashboard/areacompare.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dashboard/templates/dashboard/classify.html" beforeDir="false" afterPath="$PROJECT_DIR$/dashboard/templates/dashboard/classify.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dashboard/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/dashboard/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dashboard/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/dashboard/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -83,7 +84,7 @@
       <workItem from="1680317662435" duration="19220000" />
       <workItem from="1680361951991" duration="2342000" />
       <workItem from="1680364535761" duration="11895000" />
-      <workItem from="1680381099836" duration="15042000" />
+      <workItem from="1680381099836" duration="16314000" />
     </task>
     <task id="LOCAL-00001" summary="Added correct chart.js installation and started work">
       <created>1680383844021</created>
