@@ -29,7 +29,7 @@ except KeyError as e:
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = [".nycacropolis.tech"]
+ALLOWED_HOSTS = [".nycacropolis.tech", ".localhost", "0.0.0.0"]
 
 
 # Application definition
