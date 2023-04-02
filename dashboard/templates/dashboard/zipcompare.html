@@ -1,7 +1,7 @@
 {% extends 'dashboard/base.html' %}
 {% block content %}
     <h2 class="display-3">{{ building.street_address_1 }}, {{ building.borough }}</h2>
-    <h4 class="text-muted">How do you compare to buildings of similar sizes?</h4>
+    <h4 class="text-muted">How do you compare to other buildings in Zip Code {{ building.postcode }}?</h4>
     <hr class="my-4">
 
     <div class="container-fluid" id="graphs">
