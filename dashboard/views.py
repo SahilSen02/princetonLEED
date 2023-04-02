@@ -1,4 +1,6 @@
 from django.shortcuts import render
+from django.views.generic import ListView
+
 from dashboard.models import LL84Building, BINLookup
 from django.http import HttpResponse
 from django.db.models import Avg, Max, Min, StdDev
@@ -359,4 +361,14 @@ def zipcodecompare(request, id):
 def notfound(request):
     return render(request, 'dashboard/buildingdoesnotexist.html')
 
-# def
+def rankings(request):
+    return render(request, 'dashboard/rankings.html')
+
+class RankingView(ListView):
+
+    model = LL84Building
+    paginate_by = 50
+
+    queryset = LL84Building.objects.all()[:10]
+
+
