@@ -83,7 +83,7 @@
 <!-- Content Block -->
 <main role="main" class="" style="margin-right:10px; margin-left:10px">
     <div class="row" style="">
-        <div class="col-md-9">
+        <div class="col-md-12">
             {% if messages %}
                 {% for message in messages %}
                     <div class="alert alert-{{ message.tags }}">
@@ -95,23 +95,6 @@
             {% endblock %}
         </div>
         <!-- sidebar -->
-        <div class="col-md-3 border rounded" style="border-color: #005F22; margin-top: 10px;">
-            <div class="content-section">
-                <h3>Our Sidebar</h3>
-                <p class='text-muted'>Helpful Links to Guide You
-                <ul class="list-group" style="margin-bottom: 10px">
-                    <li class="list-group-item list-group-item-light"><a href="https://www.usgbc.org/leed">LEED
-                        Website </a></li>
-                    {% if user.is_superuser %}
-                        <li class="list-group-item list-group-item-light"><a href="{% url 'admin:index' %}">Admin
-                            Page</a></li>
-
-                    {% endif %}
-                    <li class="list-group-item list-group-item-light"><a href="{% url 'classify' %}">Classify</a></li>
-                </ul>
-            </div>
-        </div>
-    </div>
 
 </main>
 </body>

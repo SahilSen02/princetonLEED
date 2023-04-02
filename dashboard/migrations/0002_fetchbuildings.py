@@ -150,5 +150,5 @@ class Migration(migrations.Migration):
     operations = [
         migrations.RunPython(fetch_buildings),
         migrations.RunPython(feature_statistics),
-        migrations.RunPython(create_cohorts),
+        #migrations.RunPython(create_cohorts),
     ]
