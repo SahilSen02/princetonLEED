@@ -367,7 +367,7 @@ def rankings(request):
 class RankingView(ListView):
 
     model = LL84Building
-    paginate_by = 50
+    paginate_by = 2
 
     queryset = LL84Building.objects.all()[:10]
 
