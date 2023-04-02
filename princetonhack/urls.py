@@ -28,4 +28,5 @@ urlpatterns = [
     path('lookup/', dashboard_views.lookup, name='lookup'),
     path('notfound/', dashboard_views.notfound, name='notfound'),
     path('rankings/', dashboard_views.RankingView.as_view(template_name='dashboard/rankings.html'), name='rankings'),
+    path('rankingsrev/', dashboard_views.RankingViewDesc.as_view(template_name='dashboard/rankingsrev.html'), name='rankingsrev')
 ]

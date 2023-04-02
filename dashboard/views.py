@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.views.generic import ListView
 
-from dashboard.models import LL84Building, BINLookup
+from dashboard.models import LL84Building, BINLookup, BuildingStat
 from django.http import HttpResponse
 from django.db.models import Avg, Max, Min, StdDev
 import numpy as np
@@ -154,6 +154,7 @@ def areacompare(request, id, size=50000):
     }
     return render(request, 'dashboard/areacompare.html', context=context)
 
+
 def purposecompare(request, id):
     building = LL84Building.objects.get(id=id)
 
@@ -254,7 +255,6 @@ def purposecompare(request, id):
         'enStarIndex': enStarIndex
     }
     return render(request, 'dashboard/purposecompare.html', context=context)
-
 
 
 def zipcodecompare(request, id):
@@ -358,17 +358,42 @@ def zipcodecompare(request, id):
     }
     return render(request, 'dashboard/zipcompare.html', context=context)
 
+
 def notfound(request):
     return render(request, 'dashboard/buildingdoesnotexist.html')
+
 
 def rankings(request):
     return render(request, 'dashboard/rankings.html')
 
+
 class RankingView(ListView):
-
     model = LL84Building
-    paginate_by = 2
+    paginate_by = 50
 
-    queryset = LL84Building.objects.all()[:10]
+    def post(self, request):
+        print(request.body)
+
+    def get_queryset(self):
+        return LL84Building.objects.all().order_by('-buildingstat__absolute_rank')
+
+    def get_context_data(self, **kwargs):
+        context = super(RankingView, self).get_context_data(**kwargs)
+        context['second_queryset'] = BuildingStat.objects.all()
+        return context
 
 
+class RankingViewDesc(ListView):
+    model = LL84Building
+    paginate_by = 50
+
+    def post(self, request):
+        print(request.body)
+
+    def get_queryset(self):
+        return LL84Building.objects.all().order_by('buildingstat__absolute_rank')
+
+    def get_context_data(self, **kwargs):
+        context = super(RankingViewDesc, self).get_context_data(**kwargs)
+        context['second_queryset'] = BuildingStat.objects.all()
+        return context

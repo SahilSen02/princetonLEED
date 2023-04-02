@@ -20,7 +20,7 @@
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>LEEDer</title>
+    <title>NYC Acropolis</title>
 </head>
 <body>
 <nav class="navbar navbar-expand-md bg-body-tertiary navbar-dark" style="background-color: #353535;">
@@ -37,9 +37,9 @@
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
                     {% if currentpage == 'home' %}
-                        <a class="nav-link active" aria-current="page" href="{% url 'lookup' %}">LEEDer</a>
+                        <a class="nav-link active" aria-current="page" href="{% url 'lookup' %}">Acropolis</a>
                     {% else %}
-                        <a class="nav-link" aria-current="page" href="{% url 'index' %}">LEEDer</a>
+                        <a class="nav-link" aria-current="page" href="{% url 'index' %}">Acropolis</a>
                     {% endif %}
 
                 </li>
@@ -61,13 +61,6 @@
 
         </div>
         <div class="navbar-nav">
-            {% if user.is_authenticated %}
-                <a class="nav-item nav-link" href="{% url 'logout' %}">Logout</a>
-                <a class="nav-item nav-link" href="#">Profile</a>
-            {% else %}
-                <a class="nav-item nav-link" href="{% url 'login' %}">Log in</a>
-                <a class="nav-item nav-link" href="#">Register</a>
-            {% endif %}
 
         </div>
     </div>
