@@ -83,7 +83,7 @@ class BuildingStat(models.Model):
     norm_water_use_intensity = models.FloatField()
     norm_electricity_use_intensity = models.FloatField()
     norm_natural_gas_use_intensity = models.FloatField()
-    norm_inverse_energy_star_score = models.FloatField()
+    norm_energy_star_score = models.FloatField()
     absolute_rank = models.FloatField()
     cohort_rank = models.IntegerField()
     cohort_percentile = models.FloatField()

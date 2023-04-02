@@ -140,13 +140,13 @@ def feature_statistics(apps, schema_editor):
     FeatureStat.objects.create(feature_name="weather_normalized_natural_gas_intensity",
                                std=std, mean=mean)
 
-    inverse_energy_star_score = []
+    energy_star_score = []
     for b in LL84Building.objects.all():
-        inverse_energy_star_score.append(1 - b.energy_star_score)
+        energy_star_score.append(b.energy_star_score)
 
-    inverse_energy_star_score = pd.Series(water_intensity)
-    smry = inverse_energy_star_score.describe()
-    FeatureStat.objects.create(feature_name="inverse_energy_star_score",
+    energy_star_score = pd.Series(energy_star_score)
+    smry = energy_star_score.describe()
+    FeatureStat.objects.create(feature_name="energy_star_score",
                                std=smry[2], mean=smry[1])
 
 
@@ -193,31 +193,30 @@ def building_stats(apps, schema_editor):
 
         ghg_intensity_stat = list(FeatureStat.objects.filter(feature_name="total_ghg_emissions_intensity"))[0]
         # print(list(ghg_intensity_stat)[0].mean)
-        norm_ghg_intensity = (b.total_ghg_emissions_intensity - ghg_intensity_stat.mean) / (ghg_intensity_stat.std)
+        norm_ghg_intensity = (b.total_ghg_emissions_intensity - ghg_intensity_stat.mean) / (ghg_intensity_stat.std) if b.total_ghg_emissions_intensity else 0
 
         water_intensity_stat = list(FeatureStat.objects.filter(feature_name="total_water_use_intensity"))[0]
-        norm_water_intensity = ((b.water_use / b.gfa) - water_intensity_stat.mean) / (water_intensity_stat.std)
+        norm_water_intensity = ((b.water_use / b.gfa) - water_intensity_stat.mean) / (water_intensity_stat.std) if b.water_use and b.gfa else 0
 
-        electricity_intensity_stat = \
-        list(FeatureStat.objects.filter(feature_name="weather_normalized_electricity_intensity"))[0]
+        electricity_intensity_stat = list(FeatureStat.objects.filter(feature_name="weather_normalized_electricity_intensity"))[0]
         norm_electricity_intensity = (b.weather_normalized_electricity_intensity - electricity_intensity_stat.mean) / (
-            electricity_intensity_stat.std)
+            electricity_intensity_stat.std) if b.weather_normalized_electricity_intensity else 0
 
         ng_intensity_stat = list(FeatureStat.objects.filter(feature_name="weather_normalized_natural_gas_intensity"))[0]
         norm_ng_intensity = (b.weather_normalized_natural_gas_intensity - ng_intensity_stat.mean) / (
-            ng_intensity_stat.std)
+            ng_intensity_stat.std) if b.weather_normalized_natural_gas_intensity else 0
 
-        inverse_energy_star_stat = list(FeatureStat.objects.filter(feature_name="inverse_energy_star_score"))[0]
-        norm_inverse_energy_star = (1 - b.energy_star_score - inverse_energy_star_stat.mean) / (
-            inverse_energy_star_stat.std)
+        energy_star_stat = list(FeatureStat.objects.filter(feature_name="energy_star_score"))[0]
+        norm_energy_star = (b.energy_star_score - energy_star_stat.mean) / (
+            energy_star_stat.std) if b.energy_star_score else 0
 
-        absolute_rank = norm_ghg_intensity + norm_water_intensity + norm_electricity_intensity + norm_ng_intensity + norm_inverse_energy_star
+        absolute_rank = -norm_ghg_intensity + -norm_water_intensity + -norm_electricity_intensity + -norm_ng_intensity + norm_energy_star
 
         BuildingStat.objects.create(building=b, cohort=cohort, norm_ghg_intensity=norm_ghg_intensity,
                                     norm_water_use_intensity=norm_water_intensity,
                                     norm_electricity_use_intensity=norm_electricity_intensity,
                                     norm_natural_gas_use_intensity=norm_ng_intensity,
-                                    norm_inverse_energy_star_score=norm_inverse_energy_star,
+                                    norm_energy_star_score=norm_energy_star,
                                     absolute_rank=absolute_rank, cohort_rank=0, cohort_percentile=0)
         i += 1
     print("")
