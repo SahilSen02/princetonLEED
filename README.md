@@ -24,8 +24,8 @@ First pivot, we were originally thinking of doing a securitized masters, and we 
 Next, we wanted to pivot to doing a LEED dashboard (a sustainability and tax credit scheme), however, we realized it would be hard to do what we wanted and automatically score buildings for LEED because of lack of training data and complex indicators.
 
 Then, we pivoted to our current idea.
-## Accomplishments that we're proud office
-TBD
+## Accomplishments that we're proud of
+First hackathon, so we are very happy to complete a product. Pretty happy with the data structure design.
 ## What we learned
 Learned a lot about the process of ideation, and how to research effectively before deciding on an idea.
 
