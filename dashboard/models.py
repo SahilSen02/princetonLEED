@@ -51,8 +51,8 @@ class Cohort(models.Model):
         ('XLG', 'Extra Large (135,000 sqft and larger)'),
     ]
     USE_CHOICES = [
-        ('RES', 'Residential'),
-        ('NRS', 'Non-Residential')
+        ('R', 'Residential'),
+        ('NR', 'Non-Residential')
     ]
     NAME_CHOICES = [
         ('SML-R', 'Small Residential (0 sqft to 33,500 sqft)'),
@@ -72,6 +72,8 @@ class Cohort(models.Model):
     size_category = models.CharField(
         max_length=3, choices=SIZE_CATEGORY_CHOICES)
     use = models.CharField(max_length=3, choices=USE_CHOICES)
+    min_size = models.IntegerField()
+    max_size = models.IntegerField()
 
 
 class BuildingStat(models.Model):

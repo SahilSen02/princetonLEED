@@ -28,8 +28,8 @@ def fetch_buildings(apps, schema_editor):
         csvReader = csv.DictReader(csvf)
         i = 0
         for b in csvReader:
-            if i % 3000 == 0:
-                print((i/3000*10), "%", end=" ", flush=True)
+            if i % 2800 == 0:
+                print((i/2800*10), "%", end=" ", flush=True)
             for key in b:
                 if b[key] == "Not Available":
                     b[key] = False
@@ -47,7 +47,7 @@ def fetch_buildings(apps, schema_editor):
                     street_address_1=b["Address 1"] if b["Address 1"] else False,
                     city=b["City"] if b["City"] else False,
                     state="NY",
-                    postcode=b['Postcode'] if "Postcode" in b else False,
+                    postcode=b['Postal Code'] if "Postal Code" in b else False,
                     borough=b['Borough'] if "Borough" in b else False,
                     longitude=b['Longitude'] if "Longitude" in b and b['Longitude'] else False,
                     latitude=b['Latitude'] if "Latitude" in b and b['Latitude'] else False,
@@ -91,6 +91,7 @@ def fetch_buildings(apps, schema_editor):
                         BINLookup.objects.create(
                             nyc_bin=bin, building=building_obj)
             i += 1
+        print("")
 
 
 def feature_statistics(apps, schema_editor):
@@ -136,9 +137,76 @@ def feature_statistics(apps, schema_editor):
     FeatureStat.objects.create(feature_name="inverse_energy_star_score",
                                std=smry[2], mean=smry[1])
 
-# def create_cohorts(apps, schema_editor):
-#     LL84Building = apps.get_model('dashboard', 'LL84Building')
-#     Cohort = apps.get_model('dashboard', 'BINLookup')
+def create_cohorts(apps, schema_editor):
+    Cohort = apps.get_model('dashboard', 'Cohort')
+    Cohort.objects.create(name='SML-R', size_category="SML", use="R", min_size=0, max_size=33500)
+    Cohort.objects.create(name='MSM-R', size_category="MSM", use="R", min_size=33500, max_size=50000)
+    Cohort.objects.create(name='MLG-R', size_category="MLG", use="R", min_size=50000, max_size=75000)
+    Cohort.objects.create(name='LRG-R', size_category="LRG", use="R", min_size=75000, max_size=135000)
+    Cohort.objects.create(name='XLG-R', size_category="XLG", use="R", min_size=135000, max_size=25000000)
+    Cohort.objects.create(name='SML-NR', size_category="SML", use="NR", min_size=0, max_size=33500)
+    Cohort.objects.create(name='MSM-NR', size_category="MSM", use="NR", min_size=33500, max_size=50000)
+    Cohort.objects.create(name='MLG-NR', size_category="MLG", use="NR", min_size=50000, max_size=75000)
+    Cohort.objects.create(name='LRG-NR', size_category="LRG", use="NR", min_size=75000, max_size=135000)
+    Cohort.objects.create(name='XLG-NR', size_category="XLG", use="NR", min_size=135000, max_size=25000000)
+
+def building_stats(apps, schema_editor):
+    Cohort = apps.get_model('dashboard', 'Cohort')
+    BuildingStat = apps.get_model('dashboard', 'BuildingStat')
+    LL84Building = apps.get_model('dashboard', 'LL84Building')
+    FeatureStat = apps.get_model('dashboard', 'FeatureStat')
+
+    i = 0
+    for b in LL84Building.objects.all():
+        if i % 1500 == 0:
+            print((i/1500*10), "%", end=" ", flush=True)
+        size_category = ""
+        use = ""
+        if b.primary_property_type_selected == "Multifamily Housing" or b.primary_property_type_selected == "Residence Hall/Dormitory" or b.primary_property_type_selected == "Residential Care Facility" or b.primary_property_type_selected  == "Senior Living Community" or  b.primary_property_type_selected  == "Single Family Home":
+            use = "R"
+        else:
+            use = "NR"
+
+        gfa = b.gfa
+        # print("gfa: ", gfa)
+        for c in Cohort.objects.all():
+            # print("min: ", c.min_size)
+            # print("max: ", c.max_size)
+            if gfa >= c.min_size and gfa < c.max_size:
+                size_category = c.size_category
+        # print(size_category+'-'+use)
+        cohort = list(Cohort.objects.filter(name=size_category+'-'+use))[0]
+
+        ghg_intensity_stat = list(FeatureStat.objects.filter(feature_name="total_ghg_emissions_intensity"))[0]
+        # print(list(ghg_intensity_stat)[0].mean)
+        norm_ghg_intensity = (b.total_ghg_emissions_intensity - ghg_intensity_stat.mean)/(ghg_intensity_stat.std)
+
+        water_intensity_stat = list(FeatureStat.objects.filter(feature_name="total_water_use_intensity"))[0]
+        norm_water_intensity = ((b.water_use/b.gfa) - water_intensity_stat.mean)/(water_intensity_stat.std)
+
+        electricity_intensity_stat = list(FeatureStat.objects.filter(feature_name="weather_normalized_electricity_intensity"))[0]
+        norm_electricity_intensity = (b.weather_normalized_electricity_intensity - electricity_intensity_stat.mean)/(electricity_intensity_stat.std)
+
+        ng_intensity_stat = list(FeatureStat.objects.filter(feature_name="weather_normalized_natural_gas_intensity"))[0]
+        norm_ng_intensity = (b.weather_normalized_natural_gas_intensity - ng_intensity_stat.mean)/(ng_intensity_stat.std)
+
+        inverse_energy_star_stat = list(FeatureStat.objects.filter(feature_name="inverse_energy_star_score"))[0]
+        norm_inverse_energy_star = (1-b.energy_star_score - inverse_energy_star_stat.mean)/(inverse_energy_star_stat.std)
+
+        absolute_rank = norm_ghg_intensity+norm_water_intensity+norm_electricity_intensity+norm_ng_intensity+norm_inverse_energy_star
+
+        BuildingStat.objects.create(building=b, cohort=cohort, norm_ghg_intensity=norm_ghg_intensity, norm_water_use_intensity=norm_water_intensity, norm_electricity_use_intensity=norm_electricity_intensity, norm_natural_gas_use_intensity=norm_ng_intensity, norm_inverse_energy_star_score=norm_inverse_energy_star, absolute_rank=absolute_rank, cohort_rank=0, cohort_percentile=0)
+        i += 1
+    print("")
+    for i in range(1,11):
+        print((float(i-1)*10), "%", end=" ", flush=True)
+        cohort_rank = 1
+        cohort = list(Cohort.objects.filter(id=i))[0]
+        coll = list(BuildingStat.objects.filter(cohort=cohort))
+        for b in coll:
+            b.cohort_rank = cohort_rank
+            b.save()
+            cohort_rank += 1
 
 
 class Migration(migrations.Migration):
@@ -151,4 +219,5 @@ class Migration(migrations.Migration):
         migrations.RunPython(fetch_buildings),
         migrations.RunPython(feature_statistics),
         migrations.RunPython(create_cohorts),
+        migrations.RunPython(building_stats)
     ]
