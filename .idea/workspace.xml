@@ -3,9 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="bff98fb2-7882-47ec-ba80-d215d0a32c17" name="Changes" comment="requirements.txt adding numpy">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dashboard/migrations/0001_initial.py" beforeDir="false" afterPath="$PROJECT_DIR$/dashboard/migrations/0001_initial.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dashboard/migrations/0002_fetchbuildings.py" beforeDir="false" afterPath="$PROJECT_DIR$/dashboard/migrations/0002_fetchbuildings.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dashboard/templates/dashboard/rankings.html" beforeDir="false" afterPath="$PROJECT_DIR$/dashboard/templates/dashboard/rankings.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dashboard/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/dashboard/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/princetonhack/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/princetonhack/urls.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -30,25 +31,29 @@
     <option name="stateVersion" value="1" />
   </component>
   <component name="ProjectId" id="2No5XOeZVN56fb3jyJU7uwumYyn" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/princetonhack/dashboard/templates/dashboard&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "DefaultHtmlFileTemplate": "HTML File",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "D:/princetonhack/dashboard/templates/dashboard"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\princetonhack\dashboard\templates\dashboard" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\princetonhack\dashboard\migrations" />
       <recent name="D:\princetonhack\dashboard" />
     </key>
   </component>
@@ -89,7 +94,8 @@
       <workItem from="1680361951991" duration="2342000" />
       <workItem from="1680364535761" duration="11895000" />
       <workItem from="1680381099836" duration="18427000" />
-      <workItem from="1680413284594" duration="3852000" />
+      <workItem from="1680413284594" duration="5237000" />
+      <workItem from="1680418586980" duration="180000" />
     </task>
     <task id="LOCAL-00001" summary="Added correct chart.js installation and started work">
       <created>1680383844021</created>
@@ -123,6 +129,7 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="Added correct chart.js installation and started work" />
     <MESSAGE value="requirements.txt adding numpy" />
     <option name="LAST_COMMIT_MESSAGE" value="requirements.txt adding numpy" />
