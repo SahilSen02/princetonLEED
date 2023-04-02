@@ -26,15 +26,23 @@
             <div class="col-md-6">
                 <h6 class="text-primary text-center"><u>Carbon Emissions Intensity</u></h6>
                 <canvas id="emIntChart"></canvas>
-                <p class="text-info">Building Emission Intensity: {{ building.water_use }} kilograms of CO2 per Square Foot</p>
+                <p class="text-info">Building Emission Intensity: {{ building.total_ghg_emissions_intensity }} kilograms
+                    of CO2 per Square Foot</p>
             </div>
         </div>
         <div class="row">
             <div class="col-md-6">
-                <p>Carbon Emissions Graphs</p>
+                <h6 class="text-primary text-center"><u>Electricity Usage</u></h6>
+                <canvas id="enxChart"></canvas>
+                <p class="text-info">Building Electricity Usage: {{ building.weather_normalized_electricity_use }}
+                    kiloWatt hours</p>
             </div>
             <div class="col-md-6">
-                <p>Carbon Emissions Intensity Graphs</p>
+                <h6 class="text-primary text-center"><u>Electricity Usage Intensity</u></h6>
+                <canvas id="enIntChart"></canvas>
+                <p class="text-info">Building Electricity Usage
+                    Intensity: {{ building.weather_normalized_electricity_intensity }} kiloWatt hours per Square
+                    Foot</p>
             </div>
         </div>
     </div>
@@ -255,6 +263,108 @@
         });
 
 
+        let enBins = [];
+        let enVals = [];
+
+        {% for val in enBins %}
+            enBins.push({{ val }})
+        {% endfor %}
+
+        {% for val in enVals %}
+            enVals.push({{ val }})
+        {% endfor %}
+
+        let enColors = new Array(enVals.length)
+        enColors.fill('green')
+
+        enColors[{{ enIndex }}] = '#02F51B';
+
+
+        const enx = document.getElementById('enxChart');
+
+        let enxChart = new Chart(enx, {
+            type: 'bar',
+            data: {
+                labels: enBins,
+                datasets: [{
+                    label: ['Buildings'],
+                    data: enVals,
+                    backgroundColor: emColors,
+                    hoverOffset: 4
+                }]
+            },
+            options: {
+                scales: {
+                    x: {
+                        title: {
+                            display: true,
+                            text: 'Electricity Usage (kWh)',
+                        }
+                    },
+                    y: {
+                        ticks: {
+                            beginAtZero: true
+                        },
+                        title: {
+                            display: true,
+                            text: 'Number of Buildings'
+                        }
+                    }
+                },
+                animation: {}
+            }
+        });
+
+        let enIntBins = [];
+        let enIntVals = [];
+
+        {% for val in enIntBins %}
+            enIntBins.push({{ val }})
+        {% endfor %}
+
+        {% for val in enIntVals %}
+            enIntVals.push({{ val }})
+        {% endfor %}
+
+        let enIntColors = new Array(enIntVals.length)
+        enIntColors.fill('green')
+
+        enIntColors[{{ enIntIndex }}] = '#02F51B';
+
+        const enintx = document.getElementById('enIntChart');
+
+        let enIntChart = new Chart(enintx, {
+            type: 'bar',
+            data: {
+                labels: enIntBins,
+                datasets: [{
+                    label: ['Buildings'],
+                    data: enIntVals,
+                    backgroundColor: enIntColors,
+                    hoverOffset: 4
+                }]
+            },
+            options: {
+                scales: {
+                    x: {
+                        title: {
+                            display: true,
+                            text: 'Electricity Usage Intensity (kWh/sqft',
+                        }
+                    },
+                    y: {
+                        ticks: {
+                            beginAtZero: true
+                        },
+                        title: {
+                            display: true,
+                            text: 'Number of Buildings'
+                        }
+                    }
+                },
+                animation: {}
+            }
+        });
 
 
     </script>

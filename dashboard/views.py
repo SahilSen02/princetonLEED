@@ -68,7 +68,6 @@ def areacompare(request, bin, size=50000):
     waterBins = waterBins.astype(int)
     waterIndex = bisect.bisect(waterBins, building.water_use)
 
-
     emissionStats = query.aggregate(Avg('total_ghg_emissions'), StdDev('total_ghg_emissions'))
     emAvg = int(emissionStats['total_ghg_emissions__avg'])
     emStd = int(emissionStats['total_ghg_emissions__stddev'])
@@ -79,31 +78,55 @@ def areacompare(request, bin, size=50000):
     emissionBins = emissionBins.astype(int)
     emissionIndex = bisect.bisect(emissionBins, building.total_ghg_emissions)
 
-
     emissionsIntStats = query.aggregate(
         Avg('total_ghg_emissions_intensity'), StdDev('total_ghg_emissions_intensity'))
     emIntAvg = int(emissionsIntStats['total_ghg_emissions_intensity__avg'])
     emIntStd = int(emissionsIntStats['total_ghg_emissions_intensity__stddev'])
     emIntComp = list(
-        query.filter(total_ghg_emissions_intensity__range=[emIntAvg - emIntStd, emIntAvg + emIntStd]).values_list('total_ghg_emissions',
-                                                                                            flat=True))
+        query.filter(total_ghg_emissions_intensity__range=[emIntAvg - emIntStd, emIntAvg + emIntStd]).values_list(
+            'total_ghg_emissions_intensity',
+            flat=True))
     emIntVals, emIntBins = np.histogram(emIntComp, 10)
     emIntBins = emIntBins.astype(int)
     emIntIndex = bisect.bisect(emIntBins, building.total_ghg_emissions_intensity)
 
-    energyUseStats = query.aggregate(Avg('weather_normalized_electricity_use'),
-                                     StdDev('weather_normalized_electricity_use'))
+    enStats = query.aggregate(
+        Avg('weather_normalized_electricity_use'), StdDev('weather_normalized_electricity_use'))
+    enAvg = int(enStats['weather_normalized_electricity_use__avg'])
+    enStd = int(enStats['weather_normalized_electricity_use__stddev'])
+    enComp = list(
+        query.filter(weather_normalized_electricity_use__range=[enAvg - enStd, enAvg + enStd]).values_list(
+            'weather_normalized_electricity_use',
+            flat=True))
+    enVals, enBins = np.histogram(enComp, 10)
+    enBins = enBins.astype(int)
+    enIndex = bisect.bisect(enBins, building.weather_normalized_energy_use)
 
-    energyIntStats = query.aggregate(Avg('weather_normalized_electricity_intensity'),
-                                     StdDev('weather_normalized_electricity_intensity'))
-
-    emissionsIntStats = query.aggregate(
-        Avg('total_ghg_emissions_intensity'), StdDev('total_ghg_emissions_intensity'))
+    enIntStats = query.aggregate(Avg('weather_normalized_electricity_intensity'),
+                                 StdDev('weather_normalized_electricity_intensity'))
+    enIntAvg = int(enIntStats['weather_normalized_electricity_intensity__avg'])
+    enIntStd = int(enIntStats['weather_normalized_electricity_intensity__stddev'])
+    enIntComp = list(
+        query.filter(
+            weather_normalized_electricity_intensity__range=[enIntAvg - enIntStd, enIntAvg + enIntStd]).values_list(
+            'weather_normalized_electricity_intensity',
+            flat=True))
+    enIntVals, enIntBins = np.histogram(enIntComp, 10)
+    enIntBins = enIntBins.astype(int)
+    enIntIndex = bisect.bisect(enIntBins, building.weather_normalized_electricity_intensity)
 
     context = {
         'building': building,
         'bin': bin,
         'numBuildings': numBuildings,
+        'enIntVals': enIntVals,
+        'enIntBins': enIntBins,
+        'enIntComp': enIntComp,
+        'enIntIndex': enIntIndex,
+        'enVals': enVals,
+        'enBins': enBins,
+        'enIndex': enIndex,
+        'enComp': enComp,
         'emissionVals': emissionVals,
         'emissionBins': emissionBins,
         'emissionIndex': emissionIndex,
@@ -116,7 +139,6 @@ def areacompare(request, bin, size=50000):
         'emIntVals': emIntVals,
         'emIntBins': emIntBins,
         'emIntIndex': emIntIndex,
-        'energyIntStats': energyIntStats,
         'emissionsIntStats': emissionsIntStats,
         'enStarComp': enStarComp,
         'enStarVals': enStarVals,
