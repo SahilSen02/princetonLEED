@@ -135,4 +135,9 @@ CRISPY_TEMPLATE_PACK = 'bootstrap5'
 LOGIN_REDIRECT_URL = "/"
 LOGIN_URL = '/login/'
 
+STATIC_URL = "/static/"
+# Note: Replace 'supersecure.codes' with your domain
+STATIC_ROOT = "/var/www/nycacropolis.tech/static"
+STATICFILES_DIRS = [BASE_DIR / "static"]
+
 
