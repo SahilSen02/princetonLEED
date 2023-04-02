@@ -1,7 +1,6 @@
 ## Inspiration
 This project was inspired by the vast amount of data available in the [NYC Open Data](https://opendata.cityofnewyork.us/). We started with the idea of trying to understand the satisfaction of people within the neighborhood, we wanted to understand how sustainability indicators impacted people. 
 
-We live in NYC and we all have had experiences wit
 ## What it does
 **Summary: We allow you to compare the sustainability of a building in New York to a group of its peers, creating an overall rank and a comparison by individual indicators.**
 
