@@ -34,6 +34,11 @@ def building(request, bin):
     else:
         building = LL84Building.objects.get(id=buildID)
 
+    building_id = BuildingStat.objects.get(building_id=building.id)
+
+    rank = building_id.cohort_rank
+
+
     boroughcodes = {
         'BRONX': 'The Bronx',
         'STATEN IS': 'Staten Island',
@@ -48,7 +53,8 @@ def building(request, bin):
         'building': building,
         'codes': boroughcodes,
         'borough': str(building.borough),
-        'id': building.id
+        'id': building.id,
+        'rank': rank,
     }
 
     return render(request, 'dashboard/classify.html', context=context)

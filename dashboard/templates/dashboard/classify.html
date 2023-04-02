@@ -20,13 +20,8 @@
                 {% else %}
                     <li class="list-group list-group-item">EnergyStar Score (Out of 100): Unavailable</li>
                 {% endif %}
-                {% if building.total_ghg_emissions != False %}
-                    <li class="list-group list-group-item">Carbon Emissions: {{ building.total_ghg_emissions }} Metric
-                        Tons of CO2
+                    <li class="list-group list-group-item">Cohort Building Rank: {{ rank }} 
                     </li>
-                {% else %}
-                    <li class="list-group list-group-item">Carbon Emissions: Unavailable</li>
-                {% endif %}
             </ul>
 
             <p class="text-muted">*using publicly available data from <a
