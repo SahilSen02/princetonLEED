@@ -202,7 +202,7 @@ def building_stats(apps, schema_editor):
         print((float(i-1)*10), "%", end=" ", flush=True)
         cohort_rank = 1
         cohort = list(Cohort.objects.filter(id=i))[0]
-        coll = list(BuildingStat.objects.filter(cohort=cohort))
+        coll = list(BuildingStat.objects.filter(cohort=cohort).order_by('-absolute_rank'))
         for b in coll:
             b.cohort_rank = cohort_rank
             b.save()
