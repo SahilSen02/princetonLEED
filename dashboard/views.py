@@ -1,4 +1,6 @@
 from django.shortcuts import render
+from django.utils.decorators import method_decorator
+from django.views.decorators.csrf import csrf_protect
 from django.views.generic import ListView
 
 from dashboard.models import LL84Building, BINLookup, BuildingStat
@@ -6,6 +8,7 @@ from django.http import HttpResponse
 from django.db.models import Avg, Max, Min, StdDev
 import numpy as np
 import bisect
+from .forms import FilterResults
 
 
 def index(request):
@@ -366,13 +369,11 @@ def notfound(request):
 def rankings(request):
     return render(request, 'dashboard/rankings.html')
 
-
+@method_decorator(csrf_protect, name='dispatch')
 class RankingView(ListView):
     model = LL84Building
     paginate_by = 50
 
-    def post(self, request):
-        print(request.body)
 
     def get_queryset(self):
         return LL84Building.objects.all().order_by('-buildingstat__absolute_rank')
@@ -380,8 +381,8 @@ class RankingView(ListView):
     def get_context_data(self, **kwargs):
         context = super(RankingView, self).get_context_data(**kwargs)
         context['second_queryset'] = BuildingStat.objects.all()
+        context['form'] = FilterResults()
         return context
-
 
 class RankingViewDesc(ListView):
     model = LL84Building
