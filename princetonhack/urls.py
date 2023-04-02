@@ -27,5 +27,5 @@ urlpatterns = [
     path('logout/', auth_views.LogoutView.as_view(template_name='dashboard/logout.html'), name='logout'),
     path('lookup/', dashboard_views.lookup, name='lookup'),
     path('notfound/', dashboard_views.notfound, name='notfound'),
-    path('rankings/', dashboard_views.rankings, name='rankings')
+    path('rankings/', dashboard_views.RankingView.as_view(template_name='dashboard/rankings.html'), name='rankings'),
 ]

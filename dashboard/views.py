@@ -368,4 +368,7 @@ class RankingView(ListView):
 
     model = LL84Building
     paginate_by = 50
-# def
+
+    queryset = LL84Building.objects.all()[:10]
+
+
